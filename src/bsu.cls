@@ -1,124 +1,113 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{bsu}[2023/10/26 Report Class]
+\ProvidesClass{bsu}[2024/03/24 BSU Report Class v1.0]
 
-% According to https://elib.bsu.by/bitstream/123456789/206988/1/Подготовка%20курсовых%20работ.pdf
-% More official source - https://bsu.by/upload/Об%20утверждении%20Положения%20об%20организации%20подготовки%20и%20защиты%20курсовой%20работы,%20итоговой%20аттестации.pdf
+% Based on official BSU requirements for course and diploma works
 
 \LoadClass[14pt, a4paper]{extreport}
 
 %-------------------------------------------------------------------------------
-%    Язык и кодировка
+%    Language and encoding
 %-------------------------------------------------------------------------------
 \RequirePackage[main=russian, english]{babel}
 
 %-------------------------------------------------------------------------------
-%    Шрифты и типографика
+%    Fonts and typography
 %-------------------------------------------------------------------------------
-% Use for lacal usage to find fonts
-\babelfont{rm}
-[Path=../fonts/,
-	UprightFont=timesnrcyrmt-regular,
-	BoldFont=timesnrcyrmt-bold,
-	ItalicFont=timesnrcyrmt-italic,
-	BoldItalicFont=timesnrcyrmt-bold-italic,
-	Extension=.ttf
+\RequirePackage{fontspec}
+\setmainfont[
+  Path=../fonts/,
+  UprightFont=timesnrcyrmt-regular,
+  BoldFont=timesnrcyrmt-bold,
+  ItalicFont=timesnrcyrmt-italic,
+  BoldItalicFont=timesnrcyrmt-bold-italic,
+  Extension=.ttf
 ]{times_new_roman}
 
 %-------------------------------------------------------------------------------
-%    Основные пакеты
+%    Core packages
 %-------------------------------------------------------------------------------
 \RequirePackage{graphicx}
-\RequirePackage[a4paper, margin=2cm, right=2cm, includefoot]{geometry} % Поля: левое 35мм, правое 10мм, верхнее и нижнее 20мм
+\RequirePackage[a4paper, margin=2cm, right=2cm, includefoot]{geometry}
 \RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
 \RequirePackage{enumitem}
-\RequirePackage{subfig}
-\RequirePackage{hyperref}
+\RequirePackage{subcaption}
 \RequirePackage{authblk}
 \RequirePackage{amsmath}
 \RequirePackage{listings}
 \RequirePackage{textcomp}
-\RequirePackage{microtype}
 \RequirePackage{indentfirst}
 \RequirePackage{setspace}
-% \RequirePackage{texdoc} % Для документации в IDE
+\RequirePackage{hyperref}
+\RequirePackage{array}
+\RequirePackage{caption}
+\RequirePackage{xcolor}
+\RequirePackage{microtype}
 
 \pagenumbering{arabic}
 
-
 %-------------------------------------------------------------------------------
-%    Настройка списков
+%    List configuration
 %-------------------------------------------------------------------------------
 \setlist[itemize]{noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt}
 
 %-------------------------------------------------------------------------------
-%    Настройка заголовков
+%    Heading configuration
 %-------------------------------------------------------------------------------
+% Chapter format
 \titleformat{\chapter}[display]
-{\normalfont\bfseries\huge}
-{\chaptertitlename\ \thechapter}{20pt}{\Huge}
-\titlespacing*{\chapter}{0pt}{-30pt}{40pt}
+  {\normalfont\large\bfseries\centering}
+  {\chaptertitlename\ \thechapter}
+  {0pt}
+  {\large\centering}
+\titlespacing*{\chapter}{0pt}{0pt}{15pt}
 
-\titleformat{\section}
-{\normalfont\bfseries\Large}
-{\thesection}
-{1em}
-{}
+% Section format
+\titleformat{\section}[hang]
+  {\normalfont\Large\bfseries}
+  {\hspace*{1cm}\thesection}
+  {1em}
+  {\raggedright}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
-\titleformat{\subsection}
-{\normalfont\bfseries\large}
-{\thesubsection}
-{1em}
-{}
+% Subsection format
+\titleformat{\subsection}[hang]
+  {\normalfont\bfseries}
+  {\hspace*{1cm}\thesubsection}
+  {1em}
+  {\raggedright}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
+% Subsubsection format
+\titleformat{\subsubsection}[hang]
+  {\normalfont\bfseries}
+  {\hspace*{1cm}\thesubsubsection}
+  {1em}
+  {\raggedright}
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Header/footer marks
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
 
-\titleformat{\chapter}[display]
-{\normalfont\large\bfseries\centering}
-{\chaptertitlename\ \thechapter}{0pt}{\large \centering}
-\titlespacing*{\chapter}{0pt}{0pt}{15pt}
-
-\titleformat{\section}[hang]
-{\normalfont\Large\bfseries}
-{\hspace*{1cm} \thesection}
-{1em}
-{\raggedright}
-\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-
-\titleformat{\subsection}[hang]
-{\normalfont\bfseries}
-{\hspace*{1cm} \thesubsection}
-{1em}
-{\raggedright}
-\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
-
-\titleformat{\subsubsection}[hang]
-{\normalfont\bfseries}
-{\hspace*{1cm} \thesubsubsection}
-{1em}
-{\raggedright}
-\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
-
+% Command for chapters without prefix (like "Introduction")
 \newcommand{\nonPrefixChapter}[1]{
-	\titleformat{\chapter}[display]
-	{\normalfont\large\bfseries\centering}
-	{}{0pt}{\large \centering}
-	\titlespacing*{\chapter}{-40pt}{-50pt}{15pt}
-
-	\chapter{#1}
-
-	\titleformat{\chapter}[display]
-	{\normalfont\large\bfseries\centering}
-	{\chaptertitlename\ \thechapter}{0pt}{\large \centering}
-	\titlespacing*{\chapter}{-40pt}{-50pt}{15pt}
+  \titleformat{\chapter}[display]
+    {\normalfont\large\bfseries\centering}
+    {}{0pt}{\large\centering}
+  \titlespacing*{\chapter}{0pt}{0pt}{15pt}
+  
+  \chapter{#1}
+  
+  \titleformat{\chapter}[display]
+    {\normalfont\large\bfseries\centering}
+    {\chaptertitlename\ \thechapter}{0pt}{\large\centering}
+  \titlespacing*{\chapter}{0pt}{0pt}{15pt}
 }
 
 %-------------------------------------------------------------------------------
-%    Настройка таблиц
+%    Table configuration
 %-------------------------------------------------------------------------------
-\usepackage{array}
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -127,111 +116,124 @@
 \addto\captionsrussian{\renewcommand{\tablename}{Таблица}}
 
 %-------------------------------------------------------------------------------
-%    Настройка листингов кода
+%    Code listing configuration
 %-------------------------------------------------------------------------------
-\lstdefinestyle{bwstyle}{
-	commentstyle=\itshape,
-	keywordstyle=\bfseries,
-	stringstyle=\ttfamily,
-	basicstyle=\ttfamily\footnotesize,
-	numbers=left,
-	numberstyle=\tiny,
-	stepnumber=1,
-	numbersep=5pt,
-	showspaces=false,
-	showstringspaces=false,
-	showtabs=false,
-	tabsize=4,
-	breaklines=true,
-	breakatwhitespace=false,
-	captionpos=b
+\lstdefinestyle{bsustyle}{
+  commentstyle=\color{gray}\itshape,
+  keywordstyle=\color{black}\bfseries,
+  stringstyle=\color{black}\ttfamily,
+  basicstyle=\ttfamily\footnotesize,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=4,
+  breaklines=true,
+  breakatwhitespace=false,
+  captionpos=b,
+  frame=single,
+  framesep=2pt
 }
 
-\lstset{style=bwstyle, language=C++}
-\lstset{style=bwstyle, language=python}
+\lstset{style=bsustyle}
 
 %-------------------------------------------------------------------------------
-%    Настройка ссылок и сносок
+%    Links and footnotes configuration
 %-------------------------------------------------------------------------------
 \hypersetup{
-	colorlinks=false,
+  colorlinks=false,
+  pdfborder={0 0 0},
 }
 
-\renewcommand{\thefootnote}{\arabic{footnote}} % Арабские цифры для сносок
+\renewcommand{\thefootnote}{\arabic{footnote}}
 
 %-------------------------------------------------------------------------------
-%    Настройка межстрочного интервала
+%    Line spacing and paragraph configuration
 %-------------------------------------------------------------------------------
 \onehalfspacing
-\setlength{\parindent}{1.25cm} % Абзацный отступ 1.25 см
-\linespread{1.5} % Межстрочный интервал 1.5
+\setlength{\parindent}{1.25cm}
+\linespread{1.5}
 
-% Figure captions
+%-------------------------------------------------------------------------------
+%    Figure caption configuration
+%-------------------------------------------------------------------------------
 \addto\captionsrussian{\renewcommand{\figurename}{Рисунок}}
 
 \renewcommand{\@makecaption}[2]{%
-	\vskip\abovecaptionskip
-	\sbox\@tempboxa{#1 \textemdash\ #2}%
-	\ifdim\wd\@tempboxa >\hsize
-		#1 \textemdash\ #2\par
-	\else
-		\global\@minipagefalse
-		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-	\fi
-	\vskip\belowcaptionskip}
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#1 \textemdash\ #2}%
+  \ifdim\wd\@tempboxa >\hsize
+    #1 \textemdash\ #2\par
+  \else
+    \global\@minipagefalse
+    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  \vskip\belowcaptionskip}
 
 \renewcommand{\thefigure}{\@arabic\c@figure}
 
+%-------------------------------------------------------------------------------
+%    Title page
+%-------------------------------------------------------------------------------
 \newcommand{\mytitlepage}{
-	\begin{titlepage}
-		\begin{center}
-			\textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ РЕСПУБЛИКИ БЕЛАРУСЬ БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ
-			} \\
-			Кафедра физики и аэрокосмических технологий
-		\end{center}
+  \begin{titlepage}
+    \begin{center}
+      \textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ РЕСПУБЛИКИ БЕЛАРУСЬ\\
+      БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ\\
+      ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
+      
+      \vspace{0.5cm}
+      Кафедра физики и аэрокосмических технологий
+    \end{center}
 
-		\vspace{2cm}
+    \vspace{2cm}
 
-		\begin{center}
-			\textbf{\thetitle}
-		\end{center}
+    \begin{center}
+      \textbf{\Large\thetitle}
+    \end{center}
 
-		\begin{center}
-			{Дипломная работа}
-		\end{center}
+    \begin{center}
+      {Дипломная работа}
+    \end{center}
 
-		\vspace{2.0cm}
+    \vspace{2.0cm}
 
-		\hfill
-		\parbox{17em}{
-			Глеба Евгения Михайловича \newline
-			обучающегося 4 курса специальности \newline
-			«Аэрокосмические радиоэлектронные и информационные системы и технологии»
+    \hfill
+    \parbox{17em}{
+      Глеба Евгения Михайловича \newline
+      обучающегося 4 курса специальности \newline
+      «Аэрокосмические радиоэлектронные и информационные системы и технологии»
 
-			\vspace{0.5cm}
+      \vspace{0.5cm}
 
-			Научный руководитель: \newline
-			Баранова Василина Сергеевна \newline
-			старший преподаватель\newline
-			кафедры физики и аэрокосмических технологий
-		}
+      Научный руководитель: \newline
+      Баранова Василина Сергеевна \newline
+      старший преподаватель\newline
+      кафедры физики и аэрокосмических технологий
+    }
 
-		\vspace{2.0cm}
+    \vfill
 
-		\begin{center}
-			Минск, \the\year
-		\end{center}
-
-	\end{titlepage}
+    \begin{center}
+      Минск, \the\year
+    \end{center}
+  \end{titlepage}
 }
 
+%-------------------------------------------------------------------------------
+%    Document initialization
+%-------------------------------------------------------------------------------
 \AtBeginDocument{
-	\setlength{\headheight}{14.0pt}
-	\mytitlepage
-	\addtocontents{toc}{\protect\thispagestyle{empty}}
-	\tableofcontents
-	\thispagestyle{empty} % temp solution, fix it later
-	\newpage
+  \setlength{\headheight}{14.0pt}
+  \mytitlepage
+  \addtocontents{toc}{\protect\thispagestyle{empty}}
+  \tableofcontents
+  \thispagestyle{empty}
+  \clearpage
+  \setcounter{page}{1}
 }
 
 \endinput

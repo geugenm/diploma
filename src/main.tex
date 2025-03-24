@@ -1,24 +1,21 @@
 %----------------------------------------------------------------------------------------
-% Additional Resources
-
-% Comprehensive TeX documentation: https://www.tug.org/texlive/doc.html
-% LaTeX community forums and support: https://tex.stackexchange.com/
-% Package documentation and examples: Refer to the respective package websites or CTAN (https://ctan.org/).
-
+% BSU Thesis Document
+% Author: Глеба Е. М.
+% Last updated: March 24, 2025
 %----------------------------------------------------------------------------------------
-
-% Useful resource - https://detexify.kirelabs.org/classify.html
 
 \documentclass[14pt, a4paper]{bsu}
 
-\usepackage{titlesec} 
+% Core packages
+\usepackage{titlesec}
 \usepackage{titling}
 \usepackage{verbatim}
 \usepackage{csquotes}
 \usepackage{longtable}
-\usepackage{subfig}
+\usepackage{subcaption}  % Modern replacement for subfig
 \usepackage[backend=biber, style=numeric, sorting=title]{biblatex}
 
+% Bibliography sorting configuration
 \DeclareSortingTemplate{title}{
   \sort{
     \field{title}
@@ -26,9 +23,9 @@
 }
 
 \addbibresource{src/main.bib}
-
 \DeclareNameAlias{sortname}{family-given}
 
+% Document metadata
 \title{Оценка влияния солнечной
 активности на работу бортовых
 систем низкоорбитальных
@@ -39,37 +36,39 @@ XGBoost и построения графа
 \author{Глеба Е. М., Баранова В. С.}
 \date{\today}
 
-\graphicspath{{img}}
+% Path to graphics
+\graphicspath{{img/}}
 
 \begin{document}
+
+% Introduction (without chapter numbering)
 \nonPrefixChapter{Введение}
 
+\newpage
 
+% Main content would go here
 
 \newpage
 
-
-
-
-\newpage
-
+% Conclusion (centered section format)
 \titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
 \nonPrefixChapter{Заключение}
 
-
-
 \newpage
 
+% Bibliography
 \printbibliography[heading=bibintoc,title={Список использованной литературы}]
 
 \newpage
 
+% Appendices
 \appendix
 
 \renewcommand{\chaptermark}[1]{\markboth{}{}}
 \renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
 
-\titleformat{\section}[block]{.{}{0em}{}
+% Fix for malformed section formatting
+\titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
 
 \nonPrefixChapter{Приложения} \label{sec:attachements}
 
