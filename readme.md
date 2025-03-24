@@ -8,30 +8,34 @@ Choose a TeX distribution that aligns with your operating system:
 
 **Linux:**
 
-* **TeX Live (Recommended):** Offers an extensive package collection and regular updates.
-    ```bash
-    sudo dnf install texlive-babel-russian  # Russian language support 
-    ```
-* **Other Distributions:** Explore options like TeXstudio or proTeXt based on your preferences.
+- **TeX Live (Recommended):** Offers an extensive package collection and regular updates.
+
+  ```bash
+  sudo dnf install texlive-babel-russian  # Russian language support
+  ```
+
+- **Other Distributions:** Explore options like TeXstudio or proTeXt based on your preferences.
 
 **Windows:**
 
-* **MiKTeX:** Popular choice with on-the-fly package installation. Download from https://miktex.org/download.
+- **MiKTeX:** Popular choice with on-the-fly package installation. Download from <https://miktex.org/download>.
 
 **macOS:**
 
-* **MacTeX:** A complete TeX distribution tailored for macOS. Download from https://tug.org/mactex/.
+- **MacTeX:** A complete TeX distribution tailored for macOS. Download from <https://tug.org/mactex/>.
 
 ## 2. Essential LaTeX Packages
 
 The list of required packages is listed in LaTeX document, also you can use `make` to get erros about required packages. Install packages using your TeX distribution's package manager (e.g., `tlmgr` for TeX Live).
 
 To search for some missing packages use:
+
 ```sh
 tlmgr search --file mathrsfs.sty --global
 ```
 
 To install on fedora just add prefix `texlive-`:
+
 ```sh
 sudo dnf install texlive-some-example-package
 ```
@@ -40,25 +44,25 @@ sudo dnf install texlive-some-example-package
 
 **Doom Emacs:**
 
-1. **Install LaTeX:** Refer to the Emacs package manager or official instructions (https://docs.doomemacs.org/v21.12/modules/lang/latex/).
+1. **Install LaTeX:** Refer to the Emacs package manager or official instructions (<https://docs.doomemacs.org/v21.12/modules/lang/latex/>).
 2. **(Optional) Install pdf-tools:** Enhance PDF interaction within Emacs.
 
 **Kile:**
 
-1. **Install Kile:** Use your system's package manager or download from https://kile.org/.
+1. **Install Kile:** Use your system's package manager or download from <https://kile.org/>.
 2. **Kile Features:** Enjoy a user-friendly interface with project management, syntax highlighting, code completion, and integrated PDF viewing.
 
 ## 4. Compilation and Workflow
 
-* **Compile:** Use the appropriate command or keybinding (e.g., `lualatex` for LuaLaTeX output).
-* **Automate:** Configure your editor to automatically build and view the generated PDF.
-* **Optimize:** Utilize editor features and installed packages to streamline your LaTeX workflow.
+- **Compile:** Use the appropriate command or keybinding (e.g., `lualatex` for LuaLaTeX output).
+- **Automate:** Configure your editor to automatically build and view the generated PDF.
+- **Optimize:** Utilize editor features and installed packages to streamline your LaTeX workflow.
 
 ## 5. Additional Resources
 
-* **Comprehensive TeX documentation:** https://www.tug.org/texlive/doc.html
-* **LaTeX community forums and support:** https://tex.stackexchange.com/
-* **Package documentation and examples:** Refer to package websites or CTAN (https://ctan.org/).
+- **Comprehensive TeX documentation:** <https://www.tug.org/texlive/doc.html>
+- **LaTeX community forums and support:** <https://tex.stackexchange.com/>
+- **Package documentation and examples:** Refer to package websites or CTAN (<https://ctan.org/>).
 
 ## 6. Running
 
@@ -80,11 +84,10 @@ lualatex main.tex
 3. **Customization:** Create a `.latexmkrc` file in your project directory to customize latexmk's behavior. You can specify options like the compiler to use, the output format, and the number of compilation runs.
 4. **Continuous Compilation:** Use the `-pvc` option to enable continuous compilation. Latexmk will watch for changes in your files and automatically recompile your document.
 
-**Here are some additional advanced techniques you can use with latexmk:**
+**Here are some additional-advanced techniques you can use with latexmk:**
 
-* **Specifying Dependencies:** Use the `$dependency` variable to specify dependencies between files.
-* **Running External Tools:** Use the `$postprocess` variable to run external tools after compilation, such as BibTeX or MakeIndex.
-* **Using Custom Build Rules:** Define custom build rules to handle specific file types or compilation steps.
+- **Specifying Dependencies:** Use the `$dependency` variable to specify dependencies between files.
+- **Running External Tools:** Use the `$postprocess` variable to run external tools after compilation, such as BibTeX or MakeIndex.
+- **Using Custom Build Rules:** Define custom build rules to handle specific file types or compilation steps.
 
 **By mastering latexmk, you can significantly improve your LaTeX workflow and make the compilation process more efficient.**
-
