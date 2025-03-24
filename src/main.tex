@@ -11,7 +11,7 @@
 
 \documentclass[14pt, a4paper]{bsu}
 
-\usepackage{titlesec} % Customize section headings
+\usepackage{titlesec} 
 \usepackage{titling}
 \usepackage{verbatim}
 \usepackage{csquotes}
@@ -25,19 +25,9 @@
   }
 }
 
-\hyphenation{Sat-NOGS}
-\hyphenation{Xg-Boost}
-\hyphenation{xg-boost}
-\hyphenation{Po-la-ris}
-\hyphenation{multi-purpose}
-\hyphenation{Con-ference}
-\hyphenation{Hu-man-kind}
-
 \addbibresource{src/main.bib}
 
 \DeclareNameAlias{sortname}{family-given}
-
-% \usepackage{texdoc} install this package for IDE quick documentation
 
 \title{Оценка влияния солнечной
 активности на работу бортовых
@@ -52,42 +42,42 @@ XGBoost и построения графа
 \graphicspath{{img}}
 
 \begin{document}
-    \nonPrefixChapter{Введение}
-
-      
-
-    \newpage
+\nonPrefixChapter{Введение}
 
 
-   
 
-    \newpage
+\newpage
 
-    \titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
-    \nonPrefixChapter{Заключение}
 
-  
 
-    \newpage
 
-    \printbibliography[heading=bibintoc,title={Список использованной литературы}]
+\newpage
 
-    \newpage
+\titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
+\nonPrefixChapter{Заключение}
 
-    \appendix
 
-    \renewcommand{\chaptermark}[1]{\markboth{}{}}
-    \renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
-    
-    \titleformat{\section}[block]{\hspace{\parindent}\textnormal\bfseries}{}{0em}{}
-    
-    \nonPrefixChapter{Приложения} \label{sec:attachements}
-    
-    \section{Приложение \arabic{section}} 
-    \label{subsec:old_polaris_learn_config}
-    
-    В данном приложении представлена старая конфигурация, используемая для формирования нейронного ансамбля с помощью алгоритма XGBoost.
-    
-    \lstinputlisting[language=Java, label={lst:old_polaris_config}, caption=Конфигурация XGBoost]{../listings/old_polaris_cfg.json}
-    
+
+\newpage
+
+\printbibliography[heading=bibintoc,title={Список использованной литературы}]
+
+\newpage
+
+\appendix
+
+\renewcommand{\chaptermark}[1]{\markboth{}{}}
+\renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
+
+\titleformat{\section}[block]{.{}{0em}{}
+
+\nonPrefixChapter{Приложения} \label{sec:attachements}
+
+\section{Приложение \arabic{section}}
+\label{subsec:old_polaris_learn_config}
+
+В данном приложении представлена старая конфигурация, используемая для формирования нейронного ансамбля с помощью алгоритма XGBoost.
+
+\lstinputlisting[language=Java, label={lst:old_polaris_config}, caption=Конфигурация XGBoost]{../listings/old_polaris_cfg.json}
+
 \end{document}
