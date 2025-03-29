@@ -1,0 +1,61 @@
+---
+config:
+  theme: default
+---
+flowchart TB
+    subgraph "Внешние компоненты" [Внешние компоненты]
+        A[/"Спутник (LEO/MEO/GEO)"\]
+        A1["RF-модуль передачи данных"]
+        A2["Телеметрия и полезная нагрузка"]
+        A --> A1
+        A1 --> A2
+    end
+    subgraph "Наземная инфраструктура" [Наземная инфраструктура]
+        B["Наземная станция SatNOGS"]
+        B1["RF-приемник (SDR/USRP)"]
+        B2["Декодер сигналов"]
+        B3["Клиент SatNOGS"]
+        B4["Модуль синхронизации данных"]
+        B --> B1
+        B1 --> B2
+        B2 --> B3
+        B3 --> B4
+    end
+    subgraph "Серверная часть" [Серверная часть]
+        C[("База данных SatNOGS (PostgreSQL)")]
+        C1["Сервис обработки данных"]
+        C2["REST API"]
+        C3["Микросервисы аналитики"]
+        C1 --> C
+        C --> C2
+        C --> C3
+    end
+    subgraph "Визуализация" [Визуализация]
+        D["SatNOGS Dashboard"]
+        D1["Графики реального времени"]
+        D2["Интерактивные карты"]
+        D3["Аналитические отчеты"]
+        D4["Пользовательский интерфейс"]
+        D --> D1
+        D --> D2
+        D --> D3
+        D1 & D2 & D3 --> D4
+    end
+    A2 -.->|"Передача телеметрии\n(UHF/VHF/S-диапазон)"| B1
+    B4 -->|"HTTPS/WebSockets"| C1
+    C2 -->|"JSON/GraphQL"| D
+    D4 -->|"Веб-интерфейс\n(React/Vue.js)"| E[("Пользователь\n(Оператор/Исследователь)")]
+    classDef satellite fill:#AEFFD8,stroke:#333,stroke-width:2px
+    classDef groundStation fill:#FFE066,stroke:#333,stroke-width:2px
+    classDef client fill:#AEFFD8,stroke:#333,stroke-width:2px
+    classDef database fill:#FFBDBD,stroke:#333,stroke-width:2px
+    classDef dashboard fill:#BDE0FE,stroke:#333,stroke-width:2px
+    classDef user fill:#FFF1BD,stroke:#333,stroke-width:2px
+    classDef module fill:#E2E2E2,stroke:#333,stroke-width:1px
+    class A satellite
+    class B,B1,B2 groundStation
+    class B3,B4 client
+    class C,C1,C2,C3 database
+    class D,D1,D2,D3 dashboard
+    class E user
+    class A1,A2 module
