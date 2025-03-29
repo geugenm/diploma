@@ -12,6 +12,9 @@ find_package(use_latex REQUIRED)
 
 find_package(LATEX REQUIRED COMPONENTS LUALATEX PDFLATEX BIBER)
 
+list(APPEND CMAKE_PREFIX_PATH cmake/recommended)
+find_package(zathura REQUIRED)
+
 set(PDFLATEX_COMPILER lualatex)
 set(LATEX_COMPILER lualatex)
 
@@ -26,3 +29,12 @@ file(CREATE_LINK "${CMAKE_CURRENT_LIST_DIR}/fonts"
 
 file(CREATE_LINK "${CMAKE_CURRENT_LIST_DIR}/img"
      "${CMAKE_CURRENT_BINARY_DIR}/img" SYMBOLIC)
+
+if(ZATHURA)
+  add_custom_target(
+    view_pdf
+    COMMAND ${ZATHURA} ${CMAKE_CURRENT_BINARY_DIR}/main.pdf
+    DEPENDS main_pdf
+    COMMENT "Opening PDF with Zathura"
+    VERBATIM USES_TERMINAL)
+endif()
