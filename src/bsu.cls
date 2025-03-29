@@ -14,15 +14,6 @@
 %    Fonts and typography
 %-------------------------------------------------------------------------------
 \RequirePackage{fontspec}
-\setmainfont[
-	Path=fonts/,
-	UprightFont=timesnrcyrmt-regular,
-	BoldFont=timesnrcyrmt-bold,
-	ItalicFont=timesnrcyrmt-italic,
-	BoldItalicFont=timesnrcyrmt-bold-italic,
-	Extension=.ttf
-]{TimesNewRoman}
-
 %-------------------------------------------------------------------------------
 %    Core packages
 %-------------------------------------------------------------------------------
@@ -42,7 +33,7 @@
 \RequirePackage{array}
 \RequirePackage{caption}
 \RequirePackage{xcolor}
-\RequirePackage{microtype}
+%\RequirePackage{microtype}
 
 \pagenumbering{arabic}
 

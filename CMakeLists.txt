@@ -9,6 +9,7 @@ project(
 include(cmake/UseLATEX.cmake)
 
 set(PDFLATEX_COMPILER lualatex)
+set(LATEX_COMPILER lualatex)
 
 file(GLOB TTF_FILES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/fonts/*.ttf")
 file(COPY ${TTF_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/fonts)
@@ -20,7 +21,11 @@ add_latex_document(
   BIBFILES
   src/references.bib
   INCLUDE_DIRECTORIES
+  fonts
   src
   IMAGE_DIRS
   img
-  USE_INDEX)
+  USE_BIBLATEX)
+
+set_target_properties(main_pdf PROPERTIES LATEX_COMPILER_FLAGS
+                                          "-interaction=nonstopmode")
