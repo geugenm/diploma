@@ -15,13 +15,13 @@
 %-------------------------------------------------------------------------------
 \RequirePackage{fontspec}
 \setmainfont[
-  Path=../fonts/,
-  UprightFont=timesnrcyrmt-regular,
-  BoldFont=timesnrcyrmt-bold,
-  ItalicFont=timesnrcyrmt-italic,
-  BoldItalicFont=timesnrcyrmt-bold-italic,
-  Extension=.ttf
-]{times_new_roman}
+	Path=fonts/,
+	UprightFont=timesnrcyrmt-regular,
+	BoldFont=timesnrcyrmt-bold,
+	ItalicFont=timesnrcyrmt-italic,
+	BoldItalicFont=timesnrcyrmt-bold-italic,
+	Extension=.ttf
+]{TimesNewRoman}
 
 %-------------------------------------------------------------------------------
 %    Core packages
@@ -56,34 +56,34 @@
 %-------------------------------------------------------------------------------
 % Chapter format
 \titleformat{\chapter}[display]
-  {\normalfont\large\bfseries\centering}
-  {\chaptertitlename\ \thechapter}
-  {0pt}
-  {\large\centering}
+{\normalfont\large\bfseries\centering}
+{\chaptertitlename\ \thechapter}
+{0pt}
+{\large\centering}
 \titlespacing*{\chapter}{0pt}{0pt}{15pt}
 
 % Section format
 \titleformat{\section}[hang]
-  {\normalfont\Large\bfseries}
-  {\hspace*{1cm}\thesection}
-  {1em}
-  {\raggedright}
+{\normalfont\Large\bfseries}
+{\hspace*{1cm}\thesection}
+{1em}
+{\raggedright}
 \titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 % Subsection format
 \titleformat{\subsection}[hang]
-  {\normalfont\bfseries}
-  {\hspace*{1cm}\thesubsection}
-  {1em}
-  {\raggedright}
+{\normalfont\bfseries}
+{\hspace*{1cm}\thesubsection}
+{1em}
+{\raggedright}
 \titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 % Subsubsection format
 \titleformat{\subsubsection}[hang]
-  {\normalfont\bfseries}
-  {\hspace*{1cm}\thesubsubsection}
-  {1em}
-  {\raggedright}
+{\normalfont\bfseries}
+{\hspace*{1cm}\thesubsubsection}
+{1em}
+{\raggedright}
 \titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 % Header/footer marks
@@ -92,17 +92,17 @@
 
 % Command for chapters without prefix (like "Introduction")
 \newcommand{\nonPrefixChapter}[1]{
-  \titleformat{\chapter}[display]
-    {\normalfont\large\bfseries\centering}
-    {}{0pt}{\large\centering}
-  \titlespacing*{\chapter}{0pt}{0pt}{15pt}
-  
-  \chapter{#1}
-  
-  \titleformat{\chapter}[display]
-    {\normalfont\large\bfseries\centering}
-    {\chaptertitlename\ \thechapter}{0pt}{\large\centering}
-  \titlespacing*{\chapter}{0pt}{0pt}{15pt}
+	\titleformat{\chapter}[display]
+	{\normalfont\large\bfseries\centering}
+	{}{0pt}{\large\centering}
+	\titlespacing*{\chapter}{0pt}{0pt}{15pt}
+
+	\chapter{#1}
+
+	\titleformat{\chapter}[display]
+	{\normalfont\large\bfseries\centering}
+	{\chaptertitlename\ \thechapter}{0pt}{\large\centering}
+	\titlespacing*{\chapter}{0pt}{0pt}{15pt}
 }
 
 %-------------------------------------------------------------------------------
@@ -119,23 +119,23 @@
 %    Code listing configuration
 %-------------------------------------------------------------------------------
 \lstdefinestyle{bsustyle}{
-  commentstyle=\color{gray}\itshape,
-  keywordstyle=\color{black}\bfseries,
-  stringstyle=\color{black}\ttfamily,
-  basicstyle=\ttfamily\footnotesize,
-  numbers=left,
-  numberstyle=\tiny,
-  stepnumber=1,
-  numbersep=5pt,
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  tabsize=4,
-  breaklines=true,
-  breakatwhitespace=false,
-  captionpos=b,
-  frame=single,
-  framesep=2pt
+	commentstyle=\color{gray}\itshape,
+	keywordstyle=\color{black}\bfseries,
+	stringstyle=\color{black}\ttfamily,
+	basicstyle=\ttfamily\footnotesize,
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4,
+	breaklines=true,
+	breakatwhitespace=false,
+	captionpos=b,
+	frame=single,
+	framesep=2pt
 }
 
 \lstset{style=bsustyle}
@@ -144,8 +144,8 @@
 %    Links and footnotes configuration
 %-------------------------------------------------------------------------------
 \hypersetup{
-  colorlinks=false,
-  pdfborder={0 0 0},
+	colorlinks=false,
+	pdfborder={0 0 0},
 }
 
 \renewcommand{\thefootnote}{\arabic{footnote}}
@@ -163,15 +163,15 @@
 \addto\captionsrussian{\renewcommand{\figurename}{Рисунок}}
 
 \renewcommand{\@makecaption}[2]{%
-  \vskip\abovecaptionskip
-  \sbox\@tempboxa{#1 \textemdash\ #2}%
-  \ifdim\wd\@tempboxa >\hsize
-    #1 \textemdash\ #2\par
-  \else
-    \global\@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-  \vskip\belowcaptionskip}
+	\vskip\abovecaptionskip
+	\sbox\@tempboxa{#1 \textemdash\ #2}%
+	\ifdim\wd\@tempboxa >\hsize
+		#1 \textemdash\ #2\par
+	\else
+		\global\@minipagefalse
+		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+	\fi
+	\vskip\belowcaptionskip}
 
 \renewcommand{\thefigure}{\@arabic\c@figure}
 
@@ -179,61 +179,61 @@
 %    Title page
 %-------------------------------------------------------------------------------
 \newcommand{\mytitlepage}{
-  \begin{titlepage}
-    \begin{center}
-      \textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ РЕСПУБЛИКИ БЕЛАРУСЬ\\
-      БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ\\
-      ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
-      
-      \vspace{0.5cm}
-      Кафедра физики и аэрокосмических технологий
-    \end{center}
+	\begin{titlepage}
+		\begin{center}
+			\textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ РЕСПУБЛИКИ БЕЛАРУСЬ\\
+				БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ\\
+				ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
 
-    \vspace{2cm}
+			\vspace{0.5cm}
+			Кафедра физики и аэрокосмических технологий
+		\end{center}
 
-    \begin{center}
-      \textbf{\Large\thetitle}
-    \end{center}
+		\vspace{2cm}
 
-    \begin{center}
-      {Дипломная работа}
-    \end{center}
+		\begin{center}
+			\textbf{\Large\thetitle}
+		\end{center}
 
-    \vspace{2.0cm}
+		\begin{center}
+			{Дипломная работа}
+		\end{center}
 
-    \hfill
-    \parbox{17em}{
-      Глеба Евгения Михайловича \newline
-      обучающегося 4 курса специальности \newline
-      «Аэрокосмические радиоэлектронные и информационные системы и технологии»
+		\vspace{2.0cm}
 
-      \vspace{0.5cm}
+		\hfill
+		\parbox{17em}{
+			Глеба Евгения Михайловича \newline
+			обучающегося 4 курса специальности \newline
+			«Аэрокосмические радиоэлектронные и информационные системы и технологии»
 
-      Научный руководитель: \newline
-      Баранова Василина Сергеевна \newline
-      старший преподаватель\newline
-      кафедры физики и аэрокосмических технологий
-    }
+			\vspace{0.5cm}
 
-    \vfill
+			Научный руководитель: \newline
+			Баранова Василина Сергеевна \newline
+			старший преподаватель\newline
+			кафедры физики и аэрокосмических технологий
+		}
 
-    \begin{center}
-      Минск, \the\year
-    \end{center}
-  \end{titlepage}
+		\vfill
+
+		\begin{center}
+			Минск, \the\year
+		\end{center}
+	\end{titlepage}
 }
 
 %-------------------------------------------------------------------------------
 %    Document initialization
 %-------------------------------------------------------------------------------
 \AtBeginDocument{
-  \setlength{\headheight}{14.0pt}
-  \mytitlepage
-  \addtocontents{toc}{\protect\thispagestyle{empty}}
-  \tableofcontents
-  \thispagestyle{empty}
-  \clearpage
-  \setcounter{page}{1}
+	\setlength{\headheight}{14.0pt}
+	\mytitlepage
+	\addtocontents{toc}{\protect\thispagestyle{empty}}
+	\tableofcontents
+	\thispagestyle{empty}
+	\clearpage
+	\setcounter{page}{1}
 }
 
 \endinput

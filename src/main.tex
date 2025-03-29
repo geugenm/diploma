@@ -1,18 +1,13 @@
-%----------------------------------------------------------------------------------------
-% BSU Thesis Document
-% Author: Глеба Е. М.
-% Last updated: March 24, 2025
-%----------------------------------------------------------------------------------------
+\RequirePackage{currfile}
 
-\documentclass[14pt, a4paper]{bsu}
+\documentclass[14pt, a4paper]{src/bsu}
 
-% Core packages
 \usepackage{titlesec}
 \usepackage{titling}
 \usepackage{verbatim}
 \usepackage{csquotes}
 \usepackage{longtable}
-\usepackage{subcaption}  % Modern replacement for subfig
+\usepackage{subcaption}  
 \usepackage[backend=biber, style=numeric, sorting=title]{biblatex}
 
 % Bibliography sorting configuration
@@ -22,7 +17,7 @@
   }
 }
 
-\addbibresource{src/main.bib}
+\addbibresource{\currfiledir/references.bib}
 \DeclareNameAlias{sortname}{family-given}
 
 % Document metadata
@@ -37,7 +32,7 @@ XGBoost и построения графа
 \date{\today}
 
 % Path to graphics
-\graphicspath{{img/}}
+\graphicspath{{\currfiledir/../img/}}
 
 \begin{document}
 
@@ -398,7 +393,7 @@ $subsample$ и многие другие. Расширенный набор ко
 	                                                  & \textbf{Влияние}
 	\\ \hline \endfirsthead
 
-	\multicolumn{3}{c}% {\tablename\ \thetable\ -- \textit{Продолжение}}
+	\multicolumn{3}{c} {\tablename\ \thetable\ -- \textit{Продолжение}}
 	\\ \hline \textbf{Параметр}             & \textbf{Описание}
 	                                                  & \textbf{Влияние}
 	\\ \hline \endhead

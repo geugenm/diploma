@@ -1,0 +1,6 @@
+defaultIndent: "  "
+lineWidth: 80
+modifyLineBreaks:
+  textWrapOptions:
+    columns: 80
+    separator: " "
