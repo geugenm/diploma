@@ -14,6 +14,15 @@
 %    Fonts and typography
 %-------------------------------------------------------------------------------
 \RequirePackage{fontspec}
+\setmainfont[
+	Path=fonts/,
+	UprightFont=*-regular,
+	BoldFont=*-bold,
+	ItalicFont=*-italic,
+	BoldItalicFont=*-italic,
+	Extension=.ttf
+]{times_new_roman}
+
 %-------------------------------------------------------------------------------
 %    Core packages
 %-------------------------------------------------------------------------------
