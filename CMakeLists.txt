@@ -5,27 +5,24 @@ project(
   DESCRIPTION "Professional LaTeX document"
   HOMEPAGE_URL "https://example.com")
 
+list(APPEND CMAKE_PREFIX_PATH cmake)
+
 # https://gitlab.kitware.com/cmake/community/-/wikis/contrib/modules/UseLATEX?version_id=19e293ada5929d3a8d337c5351fb733cba542322
-include(cmake/UseLATEX.cmake)
+find_package(use_latex REQUIRED)
+
+find_package(LATEX REQUIRED COMPONENTS LUALATEX PDFLATEX BIBER)
 
 set(PDFLATEX_COMPILER lualatex)
 set(LATEX_COMPILER lualatex)
 
-file(GLOB TTF_FILES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/fonts/*.ttf")
-file(COPY ${TTF_FILES} DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/fonts)
-
-add_latex_document(
-  src/main.tex
-  INPUTS
-  src/bsu.cls
-  BIBFILES
-  src/references.bib
-  INCLUDE_DIRECTORIES
-  fonts
-  src
-  IMAGE_DIRS
-  img
-  USE_BIBLATEX)
+add_latex_document(src/main.tex INPUTS src/bsu.cls BIBFILES src/references.bib
+                   USE_BIBLATEX)
 
 set_target_properties(main_pdf PROPERTIES LATEX_COMPILER_FLAGS
                                           "-interaction=nonstopmode")
+
+file(CREATE_LINK "${CMAKE_CURRENT_LIST_DIR}/fonts"
+     "${CMAKE_CURRENT_BINARY_DIR}/fonts" SYMBOLIC)
+
+file(CREATE_LINK "${CMAKE_CURRENT_LIST_DIR}/img"
+     "${CMAKE_CURRENT_BINARY_DIR}/img" SYMBOLIC)
