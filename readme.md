@@ -1,6 +1,6 @@
 # LuaTeX Project Setup and Compilation Guide
 
-This document provides a comprehensive guide to setting up a LaTeX environment using LuaTeX for efficient document editing and typesetting. We will explore two popular editor options: Emacs with AUCTeX and Kile.
+This document provides a comprehensive guide to setting up a LaTeX environment using LuaTeX for efficient document editing and typesetting. We will explore four popular editor options: Emacs with AUCTeX, lazynvim with vimtex, overleaf and Kile.
 
 ## 1. Installing a TeX Distribution
 
@@ -11,7 +11,7 @@ Choose a TeX distribution that aligns with your operating system:
 - **TeX Live (Recommended):** Offers an extensive package collection and regular updates.
 
   ```bash
-  sudo dnf install texlive-babel-russian  # Russian language support
+  sudo dnf install texlive-full
   ```
 
 - **Other Distributions:** Explore options like TeXstudio or proTeXt based on your preferences.
@@ -69,10 +69,9 @@ sudo dnf install texlive-some-example-package
 Just use:
 
 ```bash
-sudo dnf install $(sed 's/^/texlive-/' pkg.txt)
-cd src
-biber main
-lualatex main.tex
+sudo dnf install texlive-full
+cmake --preset=release .
+cmake --build build/release --config release
 ```
 
 ## 7. Advanced Techniques with Latexmk
