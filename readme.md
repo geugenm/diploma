@@ -1,6 +1,20 @@
 # LuaTeX Project Setup and Compilation Guide
 
-This document provides a comprehensive guide to setting up a LaTeX environment using LuaTeX for efficient document editing and typesetting. We will explore four popular editor options: Emacs with AUCTeX, lazynvim with vimtex, overleaf and Kile.
+[![GitHub Issues](https://img.shields.io/github/issues/geugenm/diploma?style=for-the-badge&color=171b20&labelColor=171b20)](https://github.com/geugenm/diploma/issues)
+[![CMake](https://img.shields.io/badge/cmake-3.25+-171b20?style=for-the-badge&logo=cmake&logoColor=38bdae&labelColor=171b20)](https://cmake.org/download/)
+[![LuaLaTeX](https://img.shields.io/badge/LuaLaTeX-ready-171b20?style=for-the-badge&logo=latex&logoColor=38bdae&labelColor=171b20)](https://www.latex-project.org/)
+[![License](https://img.shields.io/badge/license-GPL-171b20?style=for-the-badge&labelColor=171b20&color=171b20)](license.md)
+
+[![Open in Overleaf](https://img.shields.io/badge/Open_in-Overleaf-171b20?style=for-the-badge&logo=overleaf&logoColor=38bdae&labelColor=171b20)](https://www.overleaf.com/docs?snip_uri=https://github.com/geugenm/diploma/archive/refs/heads/master.zip)
+[![Emacs](https://img.shields.io/badge/Emacs-compatible-171b20?style=for-the-badge&logo=gnuemacs&logoColor=38bdae&labelColor=171b20)](https://www.gnu.org/software/emacs/)
+[![Neovim](https://img.shields.io/badge/Neovim-ready-171b20?style=for-the-badge&logo=neovim&logoColor=38bdae&labelColor=171b20)](https://neovim.io/)
+
+[![Logo](img/logo.png)](https://github.com/geugenm/diploma)
+
+This document provides a comprehensive guide to setting up a LaTeX environment
+using LuaTeX for efficient document editing and typesetting. We will explore
+four popular editor options: Emacs with AUCTeX, lazynvim with vimtex, overleaf
+and Kile.
 
 ## 1. Installing a TeX Distribution
 
@@ -76,7 +90,9 @@ cmake --build build/release --config release
 
 ## 7. Advanced Techniques with Latexmk
 
-**Latexmk** is a powerful tool for automating LaTeX compilation. It can watch for changes in your files and automatically recompile your document, ensuring that the PDF output is always up-to-date. Here's how to use it:
+**Latexmk** is a powerful tool for automating LaTeX compilation. It can watch
+for changes in your files and automatically recompile your document, ensuring
+that the PDF output is always up-to-date. Here's how to use it:
 
 1. **Installation:** Install latexmk using your system's package manager.
 2. **Basic Usage:** Navigate to your LaTeX project directory in the terminal and run `latexmk -pdf yourfile.tex`. This will compile your document and generate a PDF file.
