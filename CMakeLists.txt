@@ -18,11 +18,17 @@ find_package(zathura REQUIRED)
 set(PDFLATEX_COMPILER lualatex)
 set(LATEX_COMPILER lualatex)
 
-add_latex_document(src/main.tex INPUTS src/bsu.cls BIBFILES src/references.bib
-                   USE_BIBLATEX)
+add_latex_document(
+  src/main.tex
+  INPUTS
+  src/bsu.cls
+  src/intro.tex
+  src/satnogs_overview.tex
+  BIBFILES
+  src/references.bib
+  USE_BIBLATEX)
 
-set_target_properties(main_pdf PROPERTIES LATEX_COMPILER_FLAGS
-                                          "-interaction=nonstopmode")
+set_target_properties(main_pdf PROPERTIES LATEX_COMPILER_FLAGS "-halt-on-error")
 
 file(CREATE_LINK "${CMAKE_CURRENT_LIST_DIR}/fonts"
      "${CMAKE_CURRENT_BINARY_DIR}/fonts" SYMBOLIC)
