@@ -9,8 +9,6 @@
 [![Emacs](https://img.shields.io/badge/Emacs-compatible-171b20?style=for-the-badge&logo=gnuemacs&logoColor=38bdae&labelColor=171b20)](https://www.gnu.org/software/emacs/)
 [![Neovim](https://img.shields.io/badge/Neovim-ready-171b20?style=for-the-badge&logo=neovim&logoColor=38bdae&labelColor=171b20)](https://neovim.io/)
 
-[![Logo](img/logo.png)](https://github.com/geugenm/diploma)
-
 This document provides a comprehensive guide to setting up a LaTeX environment
 using LuaTeX for efficient document editing and typesetting. We will explore
 four popular editor options: Emacs with AUCTeX, lazynvim with vimtex, overleaf
