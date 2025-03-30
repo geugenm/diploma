@@ -1,8 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{bsu}[2024/03/24 BSU Report Class v1.0]
 
-% Based on official BSU requirements for course and diploma works
-
 \LoadClass[14pt, a4paper]{extreport}
 
 %-------------------------------------------------------------------------------
