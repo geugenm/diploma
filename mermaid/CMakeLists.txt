@@ -33,7 +33,7 @@ foreach(MERMAID_FILE ${MERMAID_FILES})
       PUPPETEER_PRODUCT=${BROWSER_TYPE} ${MMDC_EXECUTABLE} -i ${MERMAID_FILE} -o
       ${OUTPUT_PNG} -b transparent
     DEPENDS ${MERMAID_FILE}
-    COMMENT "Generating PNG from ${MERMAID_NAME}.mmd"
+    COMMENT "[mermaid] generating png from ${MERMAID_NAME}.mmd"
     VERBATIM USES_TERMINAL)
 
   list(APPEND GENERATED_PNGS ${OUTPUT_PNG})
