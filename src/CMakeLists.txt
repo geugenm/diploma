@@ -16,17 +16,17 @@ add_latex_document(
 
 unset(PDFLATEX_COMPILER)
 
-if(ZATHURA)
-  get_target_property(TARGET_NAME main NAME)
+get_target_property(TARGET_NAME main NAME)
 
+if(ZATHURA)
   add_custom_target(
-    view_pdf
+    zathura_view_${TARGET_NAME}_pdf
     COMMAND ${ZATHURA} ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_NAME}.pdf
-    DEPENDS main_pdf
+    DEPENDS ${TARGET_NAME}_pdf
     COMMENT
       "[zathura]: opening pdf ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_NAME}.pdf"
     VERBATIM USES_TERMINAL)
 endif()
 
-add_dependencies(main_pdf generate_mermaid_diagrams create_fonts_symlink
-                 create_img_symlink)
+add_dependencies(${TARGET_NAME}_pdf generate_mermaid_diagrams
+                 create_fonts_symlink create_img_symlink)

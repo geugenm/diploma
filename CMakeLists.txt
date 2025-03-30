@@ -16,7 +16,6 @@ list(APPEND CMAKE_PREFIX_PATH cmake/recommended)
 
 find_package(zathura REQUIRED)
 
-
 add_custom_target(
   create_fonts_symlink ALL
   COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_LIST_DIR}/fonts"
@@ -31,5 +30,3 @@ add_custom_target(
 
 add_subdirectory(mermaid)
 add_subdirectory(src)
-
-

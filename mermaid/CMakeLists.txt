@@ -1,7 +1,7 @@
 find_program(MMDC_EXECUTABLE mmdc REQUIRED)
-find_program(NODE_EXECUTABLE node)
+find_program(NODE_EXECUTABLE node REQUIRED)
 
-file(GLOB MERMAID_FILES ${CMAKE_CURRENT_LIST_DIR}/*.mmd)
+file(GLOB CONFIGURE_DEPENDS MERMAID_FILES *.mmd)
 
 find_program(CHROMIUM_EXECUTABLE NAMES chromium chromium-browser)
 find_program(FIREFOX_EXECUTABLE NAMES firefox firefox-esr)
