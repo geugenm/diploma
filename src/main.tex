@@ -23,24 +23,12 @@
 \title{Оценка влияния солнечной активности на работу бортовых систем
   низкоорбитальных спутников с использованием алгоритма машинного обучения
 XGBoost и построения графа связности}
-\author{Глеба Е. М., Баранова В. С.}
-\date{\today}
 
 \graphicspath{{../img}{../mermaid}}
 
 \begin{document}
 
-\hyphenation{Sat-NOGS}
-\hyphenation{Xg-Boost}
-\hyphenation{xg-boost}
-\hyphenation{Po-la-ris}
-\hyphenation{multi-purpose}
-\hyphenation{Con-fe-re-nce}
-\hyphenation{Hu-man-kind}
-\hyphenation{Ja-va-Script}
-\hyphenation{Chro-mi-um}
-
-\nonPrefixChapter{Введение}
+\input{hyphenation}
 
 \input{intro}
 
@@ -52,18 +40,15 @@ XGBoost и построения графа связности}
 
 \input{polaris_overview}
 
-% Conclusion (centered section format)
 \titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
 \nonPrefixChapter{Заключение}
 
 \newpage
 
-% Bibliography
 \printbibliography[heading=bibintoc,title={Список использованной литературы}]
 
 \newpage
 
-% Appendices
 \appendix
 
 \renewcommand{\chaptermark}[1]{\markboth{}{}}
@@ -71,8 +56,7 @@ XGBoost и построения графа связности}
 
 % Fix for malformed section formatting
 \titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
-
-\nonPrefixChapter{Приложения} \label{sec:attachements}
+\nonPrefixChapter{Приложения}
 
 \section{Приложение \arabic{section}}
 \label{subsec:old_polaris_learn_config}

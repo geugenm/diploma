@@ -18,7 +18,8 @@
 	BoldFont=*-bold,
 	ItalicFont=*-italic,
 	BoldItalicFont=*-italic,
-	Extension=.ttf
+	Extension=.ttf,
+	Ligatures=TeX,
 ]{times_new_roman}
 
 %-------------------------------------------------------------------------------

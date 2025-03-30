@@ -8,6 +8,7 @@ add_latex_document(
   intro.tex
   satnogs_overview.tex
   polaris_overview.tex
+  hyphenation.tex
   BIBFILES
   references.bib
   USE_BIBLATEX
