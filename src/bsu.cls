@@ -15,7 +15,7 @@
 %-------------------------------------------------------------------------------
 \RequirePackage{fontspec}
 \setmainfont[
-	Path=fonts/,
+	Path=../fonts/,
 	UprightFont=*-regular,
 	BoldFont=*-bold,
 	ItalicFont=*-italic,

@@ -1,4 +1,4 @@
-\documentclass[14pt, a4paper]{src/bsu}
+\documentclass[14pt, a4paper]{bsu}
 
 \usepackage{titlesec}
 \usepackage{titling}
@@ -14,7 +14,7 @@
   }
 }
 
-\addbibresource{src/references.bib}
+\addbibresource{references.bib}
 \DeclareNameAlias{sortname}{family-given}
 
 \title{Оценка влияния солнечной активности на работу бортовых систем
@@ -23,7 +23,7 @@ XGBoost и построения графа связности}
 \author{Глеба Е. М., Баранова В. С.}
 \date{\today}
 
-\graphicspath{{img}}
+\graphicspath{{../img}{../mermaid}}
 
 \begin{document}
 
@@ -39,13 +39,15 @@ XGBoost и построения графа связности}
 
 \nonPrefixChapter{Введение}
 
-\input{src/intro}
+\input{intro}
 
 \newpage
 
-\input{src/satnogs_overview}
+\input{satnogs_overview}
 
 \newpage
+
+\input{polaris_overview}
 
 % Conclusion (centered section format)
 \titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
