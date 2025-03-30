@@ -9,6 +9,8 @@ add_latex_document(
   satnogs_overview.tex
   polaris_overview.tex
   hyphenation.tex
+  attachments.tex
+  ending.tex
   BIBFILES
   references.bib
   USE_BIBLATEX

@@ -1,0 +1,15 @@
+\renewcommand{\chaptermark}[1]{\markboth{}{}}
+\renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
+
+% Fix for malformed section formatting
+\titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
+\nonPrefixChapter{Приложения}
+
+\section{Приложение \arabic{section}}
+\label{subsec:old_polaris_learn_config}
+
+В данном приложении представлена старая конфигурация, используемая для формирования нейронного ансамбля с помощью алгоритма XGBoost.
+
+%\lstinputlisting[language=Java, label={lst:old_polaris_config}, caption=Конфигурация XGBoost]{../code/old_polaris_cfg.json}
+
+
