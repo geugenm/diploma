@@ -41,7 +41,11 @@
 \RequirePackage{array}
 \RequirePackage{caption}
 \RequirePackage{xcolor}
-%\RequirePackage{microtype}
+
+\RequirePackage{microtype}
+\microtypesetup{protrusion=false}
+
+\setlength{\emergencystretch}{10em}
 
 \pagenumbering{arabic}
 
