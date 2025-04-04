@@ -1,3 +1,4 @@
+# yaml-language-server: $id=https://json.schemastore.org/github-workflow.json
 name: CMake Build and Package
 
 on:
