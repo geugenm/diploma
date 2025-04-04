@@ -1,4 +1,5 @@
 # yaml-language-server: $id=https://json.schemastore.org/github-workflow.json
+# see more - https://developers.redhat.com/blog/2020/11/25/how-to-configure-yaml-schema-to-make-editing-files-easier
 name: CMake Build and Package
 
 on:
