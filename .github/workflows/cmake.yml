@@ -9,7 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest # Correctly specify Fedora as the base
 
-    container: ghcr.io/geugenm/diploma:latest
+    container:
+      image: ghcr.io/geugenm/diploma:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.DOCKER_TOKEN }}
 
     steps:
       - name: Checkout code
