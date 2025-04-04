@@ -6,6 +6,8 @@ RUN microdnf update -y && \
     cmake \
     ninja-build \
     nodejs \
+    gcc \
+    g++ \
     npm && \
     microdnf clean all
 
