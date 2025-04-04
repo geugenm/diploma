@@ -21,8 +21,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install gcc
-        run: microdnf install chromium -y
+      - name: Install firefox
+        run: microdnf install firefox -y
 
       - name: Configure (Release)
         run: cmake --preset release

@@ -42,7 +42,7 @@ foreach(mermaid_file ${mermaid_files})
             ${CMAKE_COMMAND} -E env
             PUPPETEER_EXECUTABLE_PATH=${mermaid_browser_executable}
             PUPPETEER_PRODUCT=${mermaid_browser_type} ${MMDC_EXECUTABLE} -i
-            ${mermaid_file} -o ${mermaid_output_png} -b transparent --no-sandbox
+            ${mermaid_file} -o ${mermaid_output_png} -b transparent
         DEPENDS ${mermaid_file}
         COMMENT
             "[mermaid] compiling png: '${mermaid_file}' -> '${mermaid_output_png}'"
