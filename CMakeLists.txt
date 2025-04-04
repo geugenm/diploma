@@ -3,7 +3,8 @@ project(
     diploma
     VERSION 1.0.0
     DESCRIPTION "Dedicated research page"
-    HOMEPAGE_URL "https://github.com/geugenm/diploma/tree/main")
+    HOMEPAGE_URL "https://github.com/geugenm/diploma/tree/main"
+    LANGUAGES NONE)
 
 include(CPack)
 

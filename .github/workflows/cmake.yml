@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install gcc
-        run: microdnf install gcc gcc-c++ -y
+        run: microdnf install chromium -y
 
       - name: Configure (Release)
         run: cmake --preset release
