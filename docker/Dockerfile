@@ -5,9 +5,8 @@ RUN microdnf update -y && \
     texlive-scheme-full \
     cmake \
     ninja-build \
+    chromium \
     nodejs \
-    gcc \
-    gcc-c++ \
     npm && \
     microdnf clean all
 
