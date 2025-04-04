@@ -1,0 +1,19 @@
+---
+config:
+  layout: elk
+  theme: default
+---
+flowchart TD
+    LSF["Libre Space Foundation<br>Некоммерческая организация<br>Основана в 2015"] --> SatNOGS["Проект SatNOGS<br>Открытая сеть наземных станций"] & Community["Глобальное сообщество<br>300+ станций<br>51 страна"]
+    SatNOGS --> Network["Сетевой компонент<br>Управление наблюдениями<br>Распределение задач"] & DB["База данных<br>Хранение телеметрии<br>Анализ данных"] & Client["Клиентское ПО<br>Управление оборудованием<br>SDR-обработка"] & Hardware["Аппаратная платформа<br>3D-печатные конструкции<br>Модульные антенны"]
+    Network --> API["REST API<br>Интеграция со сторонними системами"]
+    DB --> Grafana["Визуализация данных<br>Grafana-дашборды"]
+    Client --> SDR["Программно-определяемое радио<br>GNURadio-совместимые модули"]
+    Hardware --> Rotator["Поворотный механизм<br>Open Source дизайн"]
+    Community --> Contributors["Контрибьюторы<br>Хардверные инженеры<br>Радиоэнтузиасты"] & Partners["Партнёры<br>NASA Space Apps<br>CERN OHL"]
+    Network,DB,Client,Hardware["Network,DB,Client,Hardware"]
+    API,Grafana,SDR,Rotator["API,Grafana,SDR,Rotator"]
+    style LSF fill:#4a86e8,color:white
+    style SatNOGS fill:#6d9eeb,color:white
+    style Network,DB,Client,Hardware fill:#a4c2f4
+    style API,Grafana,SDR,Rotator fill:#c9daf8
