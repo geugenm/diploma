@@ -11,6 +11,7 @@ jobs:
 
     container:
       image: ghcr.io/geugenm/diploma:latest
+      options: --user 1001 # Run container as non-root user
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.DOCKER_TOKEN }}
@@ -21,8 +22,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install firefox
-        run: microdnf install firefox -y
+      - name: Install chromium
+        run: microdnf install chromium -y
 
       - name: Configure (Release)
         run: cmake --preset release
