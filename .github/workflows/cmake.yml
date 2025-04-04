@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: fedora-latest # Correctly specify Fedora as the base
+    runs-on: ubuntu-latest # Correctly specify Fedora as the base
 
     container: ghcr.io/geugenm/diploma:latest
 
