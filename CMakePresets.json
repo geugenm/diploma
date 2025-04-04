@@ -52,18 +52,7 @@
   ],
   "testPresets": [
     {
-      "name": "debug",
-      "configurePreset": "debug",
-      "output": {
-        "outputOnFailure": true
-      },
-      "execution": {
-        "noTestsAction": "error",
-        "stopOnFailure": true
-      }
-    },
-    {
-      "name": "release",
+      "name": "default",
       "configurePreset": "release",
       "output": {
         "outputOnFailure": true
@@ -101,15 +90,11 @@
       "steps": [
         {
           "type": "configure",
-          "name": "debug"
-        },
-        {
-          "type": "build",
-          "name": "debug"
+          "name": "release"
         },
         {
           "type": "test",
-          "name": "debug"
+          "name": "default"
         }
       ]
     },

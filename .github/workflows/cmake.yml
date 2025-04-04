@@ -22,7 +22,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure (Release)
+      - name: Run tests
+        run: cmake --workflow --preset test
+
+      - name: Deploy
         run: cmake --workflow --preset deploy
 
       - name: Collect artifacts

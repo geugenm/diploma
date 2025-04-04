@@ -15,6 +15,7 @@ find_package(use_latex REQUIRED)
 list(APPEND CMAKE_PREFIX_PATH cmake/recommended)
 
 find_package(zathura REQUIRED)
+find_package(latexindent REQUIRED)
 
 add_custom_target(
     create_fonts_symlink ALL
@@ -29,6 +30,8 @@ add_custom_target(
         ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_LIST_DIR}/img"
         "${CMAKE_CURRENT_BINARY_DIR}/img"
     COMMENT "[${PROJECT_NAME}] Creating symbolic link for img directory")
+
+include(CTest)
 
 add_subdirectory(mermaid)
 add_subdirectory(src)
