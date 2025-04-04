@@ -6,8 +6,6 @@ project(
     HOMEPAGE_URL "https://github.com/geugenm/diploma/tree/main"
     LANGUAGES NONE)
 
-include(CPack)
-
 find_package(LATEX REQUIRED COMPONENTS LUALATEX PDFLATEX BIBER)
 
 list(APPEND CMAKE_PREFIX_PATH cmake)
@@ -34,3 +32,5 @@ add_custom_target(
 
 add_subdirectory(mermaid)
 add_subdirectory(src)
+
+include(CPack)

@@ -23,13 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Configure (Release)
-        run: cmake --preset release
-
-      - name: Build (Release)
-        run: cmake --build --preset release
-
-      - name: Package (Release TGZ)
-        run: cpack --preset default
+        run: cmake --workflow --preset deploy
 
       - name: Collect artifacts
         run: |
@@ -42,4 +36,3 @@ jobs:
           name: release-build
           path: |
             artifacts/*.tar.gz
-            build/release/compile_commands.json

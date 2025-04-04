@@ -76,19 +76,28 @@
   ],
   "packagePresets": [
     {
-      "name": "default",
+      "name": "tgz",
       "configurePreset": "release",
-      "generators": [
-        "TGZ"
-      ],
-      "packageName": "my_package",
-      "packageVersion": "1.0.0",
+      "generators": ["TGZ"],
       "packageDirectory": "cpack"
     }
   ],
   "workflowPresets": [
     {
       "name": "debug",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "debug"
+        },
+        {
+          "type": "build",
+          "name": "debug"
+        }
+      ]
+    },
+    {
+      "name": "test",
       "steps": [
         {
           "type": "configure",
@@ -114,10 +123,23 @@
         {
           "type": "build",
           "name": "release"
+        }
+      ]
+    },
+    {
+      "name": "deploy",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "release"
         },
         {
-          "type": "test",
+          "type": "build",
           "name": "release"
+        },
+        {
+          "type": "package",
+          "name": "tgz"
         }
       ]
     }
