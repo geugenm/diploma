@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.21.0)
 project(
-  diploma
-  VERSION 1.0.0
-  DESCRIPTION "Dedicated research page"
-  HOMEPAGE_URL "https://github.com/geugenm/diploma/tree/main")
+    diploma
+    VERSION 1.0.0
+    DESCRIPTION "Dedicated research page"
+    HOMEPAGE_URL "https://github.com/geugenm/diploma/tree/main")
+
+include(CPack)
 
 find_package(LATEX REQUIRED COMPONENTS LUALATEX PDFLATEX BIBER)
 
@@ -16,16 +18,18 @@ list(APPEND CMAKE_PREFIX_PATH cmake/recommended)
 find_package(zathura REQUIRED)
 
 add_custom_target(
-  create_fonts_symlink ALL
-  COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_LIST_DIR}/fonts"
-          "${CMAKE_CURRENT_BINARY_DIR}/fonts"
-  COMMENT "[${PROJECT_NAME}] Creating symbolic link for fonts directory")
+    create_fonts_symlink ALL
+    COMMAND
+        ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_LIST_DIR}/fonts"
+        "${CMAKE_CURRENT_BINARY_DIR}/fonts"
+    COMMENT "[${PROJECT_NAME}] Creating symbolic link for fonts directory")
 
 add_custom_target(
-  create_img_symlink ALL
-  COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_LIST_DIR}/img"
-          "${CMAKE_CURRENT_BINARY_DIR}/img"
-  COMMENT "[${PROJECT_NAME}] Creating symbolic link for img directory")
+    create_img_symlink ALL
+    COMMAND
+        ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_LIST_DIR}/img"
+        "${CMAKE_CURRENT_BINARY_DIR}/img"
+    COMMENT "[${PROJECT_NAME}] Creating symbolic link for img directory")
 
 add_subdirectory(mermaid)
 add_subdirectory(src)

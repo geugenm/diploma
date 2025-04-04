@@ -76,14 +76,14 @@
   ],
   "packagePresets": [
     {
-      "name": "tgz-debug",
-      "configurePreset": "debug",
-      "generators": ["TGZ"]
-    },
-    {
-      "name": "tgz-release",
+      "name": "default",
       "configurePreset": "release",
-      "generators": ["TGZ"]
+      "generators": [
+        "TGZ"
+      ],
+      "packageName": "my_package",
+      "packageVersion": "1.0.0",
+      "packageDirectory": "cpack"
     }
   ],
   "workflowPresets": [
@@ -101,10 +101,6 @@
         {
           "type": "test",
           "name": "debug"
-        },
-        {
-          "type": "package",
-          "name": "tgz-debug"
         }
       ]
     },
@@ -122,10 +118,6 @@
         {
           "type": "test",
           "name": "release"
-        },
-        {
-          "type": "package",
-          "name": "tgz-release"
         }
       ]
     }
