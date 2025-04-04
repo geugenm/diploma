@@ -43,7 +43,7 @@ foreach(mermaid_file ${mermaid_files})
             PUPPETEER_EXECUTABLE_PATH=${mermaid_browser_executable}
             PUPPETEER_PRODUCT=${mermaid_browser_type} ${MMDC_EXECUTABLE} -i
             ${mermaid_file} -o ${mermaid_output_png} -b transparent -p
-            puppeteer.json
+            ${CMAKE_CURRENT_LIST_DIR}/puppeteer.json
         DEPENDS ${mermaid_file}
         COMMENT
             "[mermaid] compiling png: '${mermaid_file}' -> '${mermaid_output_png}'"
