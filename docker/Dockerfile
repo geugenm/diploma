@@ -7,7 +7,7 @@ RUN microdnf update -y && \
     ninja-build \
     nodejs \
     gcc \
-    g++ \
+    gcc-c++ \
     npm && \
     microdnf clean all
 
