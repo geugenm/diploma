@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install gcc
-        run: sudo dnf install gcc
+        run: microdnf install gcc
 
       - name: Configure (Release)
         run: cmake --preset release
