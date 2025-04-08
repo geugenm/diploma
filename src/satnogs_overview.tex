@@ -1,120 +1,128 @@
 \chapter{SatNOGS: Глобальная сеть наземных спутниковых станций с открытым исходным кодом}
 
-\section{Малые LEO-спутники: архитектура и проблемы долговечности}  
+\section{Малые LEO-спутники: архитектура и проблемы долговечности}
 Современные малые спутники низкой околоземной орбиты (LEO) представляют собой результат эволюции космических технологий, где доминирующую роль играют принципы модульности и стандартизации. Ключевым стандартом стали CubeSat — 10 $\times$ 10 $\times$ 11.35 см модули массой $\leq 1.33$ кг/юнит. Архитектура этих аппаратов сочетает жесткие ограничения по массе/габаритам с необходимостью выполнения сложных научных задач.
 
-\subsection{Структурные особенности}  
-Типичный CubeSat 3U (Рис. \ref{fig:cubesat_structure}) включает:  
-\begin{itemize}  
-\item Алюминиевый каркас с тепловым интерфейсом  
-\item Стек текстолита PC/104 (90 $\times$ 96 мм) для монтажа электроники  
-\item Солнечные панели с КПД 28-32\% на арсениде галлия  
-\item Химические двигатели на гидразине или электрореактивные системы  
-\end{itemize}  
+\subsection{Структурные особенности}
+Типичный CubeSat 3U (Рис. \ref{fig:cubesat_structure}) включает:
+\begin{itemize}
+	\item Алюминиевый каркас с тепловым интерфейсом
+	\item Стек текстолита PC/104 (90 $\times$ 96 мм) для монтажа электроники
+	\item Солнечные панели с КПД 28-32\% на арсениде галлия
+	\item Химические двигатели на гидразине или электрореактивные системы
+\end{itemize}
 
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}
-\draw[thick] (0,0) rectangle (8,2);
+	\centering
+	\begin{tikzpicture}
+		\draw[thick] (0,0) rectangle (8,2);
 
-% Internal divisions
-\foreach \x in {2.5, 5} \draw (\x,0) -- (\x,2);
+		% Internal divisions
+		\foreach \x in {2.5, 5} \draw (\x,0) -- (\x,2);
 
-% Subsystem labels
-\node[text width=2cm, align=center, font=\small] at (1.25,1) {Бортовой компьютер};
-\node[text width=2cm, align=center, font=\small] at (3.75,1) {Система связи};
-\node[text width=2cm, align=center, font=\small] at (6.25,1) {Научная нагрузка};
+		% Subsystem labels
+		\node[text width=2cm, align=center, font=\small] at (1.25,1) {Бортовой компьютер};
+		\node[text width=2cm, align=center, font=\small] at (3.75,1) {Система связи};
+		\node[text width=2cm, align=center, font=\small] at (6.25,1) {Научная нагрузка};
 
-% Antenna and power systems
-\draw[->] (8,1.5) -- (9,1.5) node[right] {Антенна UHF};
-\draw[->] (8,0.5) -- (9,0.5) node[right] {Солнечные панели};
+		% Antenna and power systems
+		\draw[->] (8,1.5) -- (9,1.5) node[right] {Антенна UHF};
+		\draw[->] (8,0.5) -- (9,0.5) node[right] {Солнечные панели};
 
-% Additional subsystems
-\node[below right] at (0,-0.5) {\textbf{Электропитание:}};
-\node[below right] at (0,-1) {Литий-ионные батареи};
-\node[below right] at (0,-1.5) {Распределение питания};
+		% Additional subsystems
+		\node[below right] at (0,-0.5) {\textbf{Электропитание:}};
+		\node[below right] at (0,-1) {Литий-ионные батареи};
+		\node[below right] at (0,-1.5) {Распределение питания};
 
-\node[below right] at (7.5,-0.5) {\textbf{Управление ориентацией:}};
-\node[below right] at (7.5,-1) {Реакционные колёса};
-\node[below right] at (7.5,-1.5) {Магнитометры и катушки};
+		\node[below right] at (7.5,-0.5) {\textbf{Управление ориентацией:}};
+		\node[below right] at (7.5,-1) {Реакционные колёса};
+		\node[below right] at (7.5,-1.5) {Магнитометры и катушки};
 
-% Thermal management
-\node[below right] at (0,-2.5) {\textbf{Тепловое управление:}};
-\node[below right] at (0,-3) {Пассивные радиаторы};
-\node[below right] at (0,-3.5) {Покрытия и изоляция};
+		% Thermal management
+		\node[below right] at (0,-2.5) {\textbf{Тепловое управление:}};
+		\node[below right] at (0,-3) {Пассивные радиаторы};
+		\node[below right] at (0,-3.5) {Покрытия и изоляция};
 
-% Structural details
-\node[below right] at (7.5,-2.5) {\textbf{Механическая структура:}};
-\node[below right] at (7.5,-3) {Алюминиевые сплавы 7075/6061};
-\node[below right] at (7.5,-3.5) {Амортизирующие элементы};
+		% Structural details
+		\node[below right] at (7.5,-2.5) {\textbf{Механическая структура:}};
+		\node[below right] at (7.5,-3) {Алюминиевые сплавы 7075/6061};
+		\node[below right] at (7.5,-3.5) {Амортизирующие элементы};
 
-\end{tikzpicture}
-\caption{Типовая структура CubeSat 3U с основными подсистемами}
-\label{fig:cubesat_structure}
+	\end{tikzpicture}
+	\caption{Типовая структура CubeSat 3U с основными подсистемами}
+	\label{fig:cubesat_structure}
 \end{figure}
 
 
-\subsection{Факторы ограничения срока службы}  
-\begin{table}[h]  
-\centering  
-\caption{Сравнение факторов деградации LEO/GEO спутников}  
-\begin{tabular}{|l|c|c|}  
-\hline  
-Параметр & LEO (400-600 км) & GEO (35,786 км) \\  
-\hline  
-Атмосферное сопротивление & $10^{-10}$ $\text{г/см}^3$ & $10^{-20}$ $\text{г/см}^3$ \\  
-Орбитальный распад & 5-7 лет & >15 лет \\  
-Радиационная нагрузка (TID) & 1-10 крад/год & 0.1-1 крад/год \\  
-Температурные циклы & 16 циклов/сутки & 1 цикл/год \\  
-\hline  
-\end{tabular}  
-\end{table}  
+\subsection{Факторы ограничения срока службы}
+\begin{table}[h]
+	\centering
+	\caption{Сравнение факторов деградации LEO/GEO спутников}
+	\begin{tabular}{|l|c|c|}
+		\hline
+		Параметр                    & LEO (400-600 км)           & GEO (35,786 км)            \\
+		\hline
+		Атмосферное сопротивление   & $10^{-10}$ $\text{г/см}^3$ & $10^{-20}$ $\text{г/см}^3$ \\
+		Орбитальный распад          & 5-7 лет                    & >15 лет                    \\
+		Радиационная нагрузка (TID) & 1-10 крад/год              & 0.1-1 крад/год             \\
+		Температурные циклы         & 16 циклов/сутки            & 1 цикл/год                 \\
+		\hline
+	\end{tabular}
+\end{table}
 
-Для LEO-аппаратов уравнение орбитального распада:  
+Для LEO-аппаратов уравнение орбитального распада:
 \begin{equation}
-    \frac{da}{dt} = -\frac{C_D A \rho}{2m} \sqrt{\mu a}(1 + e\cos E)
+	\frac{da}{dt} = -\frac{C_D A \rho}{2m} \sqrt{\mu a}(1 + e\cos E)
 \end{equation}
-где $C_D$ \approx 2.2 — коэффициент лобового сопротивления, $A$ — площадь сечения, $\rho$ — плотность атмосферы.  
+где $C_D$ \approx 2.2 — коэффициент лобового сопротивления, $A$ — площадь сечения, $\rho$ — плотность атмосферы.
 
-Электронные компоненты подвергаются комбинированному воздействию:  
+Электронные компоненты подвергаются комбинированному воздействию:
 \begin{itemize}
-    \item Термоциклирование ($\Delta T$ до 200°C за 90 минут)
-    \item Одиночные сбои (SEU) от протонов радиационных поясов
-    \item Накопленная доза (TID) до 50 крад за миссию
+	\item Термоциклирование ($\Delta T$ до 200°C за 90 минут)
+	\item Одиночные сбои (SEU) от протонов радиационных поясов
+	\item Накопленная доза (TID) до 50 крад за миссию
 \end{itemize}
 
-\subsection{Инженерные подходы к повышению надежности}  
-При проектировании применяются принципы:  
+\subsection{Инженерные подходы к повышению надежности}
+При проектировании применяются принципы:
 
-1. \textbf{Избыточность критических систем}:  
+1. \textbf{Избыточность критических систем}:
 \begin{itemize}
-    \item Двойные блоки питания с cross-strapping
-    \item Triple Modular Redundancy (TMR) для FPGA
-    \item Резервные компьютеры на разных архитектурах (ARM + RISC-V)
-\end{itemize} 
+	\item Двойные блоки питания с cross-strapping
+	\item Triple Modular Redundancy (TMR) для FPGA
+	\item Резервные компьютеры на разных архитектурах (ARM + RISC-V)
+\end{itemize}
 
 % todo: add and cite
 % https://escies.org/download/webDocumentFile?id=1134
 % https://scipp.ucsc.edu/groups/fermi/electronics/mil-std-883.pdf
 % https://escies.org/escc-specs/published/25100.pdf
 % https://djvu.online/file/tqx1cJFde1Qpu
-2. \textbf{Радиационная стойкость}:  
-\begin{equation}  
-R = \frac{LET_{th}}{Q} \cdot \ln\left(\frac{N_0}{N}\right)  
-\end{equation}  
-где $LET_{th} = 37\ \text{МэВ·см}^2/\text{мг}$ — пороговая линейная передача энергии, экспериментально полученное значение для кремниевых компонентов в условиях GEO-орбиты (источник: стандарт ESA SCC-251 для Single Event Effects), $Q \in [0,1]$ — эффективность сбора заряда в полупроводниковой структуре, определяемая геометрией p-n переходов и рекомбинационными потерями, $N_0$ — исходное количество рабочих компонентов в системе, $N$ — количество компонентов, сохранивших функциональность после радиационного воздействия. Формула выведена из модели облучения Вавилова-Шокли с поправкой на многократные перезаряды в МОП-структурах.  
+2. \textbf{Радиационная стойкость}:
+\begin{equation}
+	R = \frac{LET_{th}}{Q} \cdot \ln\left(\frac{N_0}{N}\right)
+\end{equation}
+где $LET_{th} = 37\ \text{МэВ·см}^2/\text{мг}$ — пороговая линейная передача
+энергии, экспериментально полученное значение для кремниевых компонентов в
+условиях GEO-орбиты (источник: стандарт ESA SCC-251 для Single Event Effects),
+$Q \in [0,1]$ — эффективность сбора заряда в полупроводниковой структуре,
+определяемая геометрией p-n переходов и рекомбинационными потерями, $N_0$ —
+исходное количество рабочих компонентов в системе, $N$ — количество компонентов,
+сохранивших функциональность после радиационного воздействия. Формула выведена
+из модели облучения Вавилова-Шокли с поправкой на многократные перезаряды в
+МОП-структурах.
 
 
 
-3. \textbf{Оптимизация ПО}:  
+3. \textbf{Оптимизация ПО}:
 \begin{itemize}
-    \item Статический анализ кода на C/C++ (MISRA-C)
-    \item RTOS с детерминированным планировщиком
-    \item CRC-32 контроль для всех телеметрических пакетов
+	\item Статический анализ кода на C/C++ (MISRA-C)
+	\item RTOS с детерминированным планировщиком
+	\item CRC-32 контроль для всех телеметрических пакетов
 \end{itemize}
 
-Пример обработки сбоя в ПО навигации:  
-\begin{lstlisting}[language=C++]  
+Пример обработки сбоя в ПО навигации:
+\begin{lstlisting}[language=C++]
 // MISRA-C++ compliant static analysis example
 // Configured with: cppcheck --enable=warning,performance --inconclusive --std=c++17
 [[nodiscard]] constexpr bool primary_nav_valid() noexcept {
@@ -125,22 +133,22 @@ R = \frac{LET_{th}}{Q} \cdot \ln\left(\frac{N_0}{N}\right)
 void telemetry_task(void* params) {
     constexpr TickType_t xFrequency = pdMS_TO_TICKS(10);
     TickType_t xLastWakeTime = xTaskGetTickCount();
-    
+
     for(;;) {
         auto packet = build_telemetry_packet();
         packet.crc32 = boost::crc32(&packet, sizeof(packet) - sizeof(uint32_t));
-        
+
         if(xQueueSend(telemetry_queue, &packet, 0) != pdPASS) {
             log_error("[comms] telemetry queue full");
         }
-        
+
         vTaskDelayUntil(&xLastWakeTime, xFrequency);
     }
 }
 
 void redundancy_handler() {
     const auto ts = get_timestamp();
-    
+
     if(primary_nav_valid()) {
         if(use_primary_nav() != 0) {
             log_error(ts, "[nav] primary system validation failed");
@@ -148,9 +156,9 @@ void redundancy_handler() {
         }
         return;
     }
-    
+
     log_warning(ts, "[nav] primary system degraded");
-    
+
     if(secondary_nav_valid() && (trigger_reboot(RECOVERY_MODE) == REBOOT_SUCCESS)) {
         if(use_secondary_nav() != 0) {
             log_error(ts, "[nav] secondary system activation failed");
@@ -158,11 +166,11 @@ void redundancy_handler() {
         }
         return;
     }
-    
+
     log_critical(ts, "[nav] total navigation failure");
     enter_safe_mode();
 }
-\end{lstlisting}  
+\end{lstlisting}
 
 \section{SatNOGS}
 
