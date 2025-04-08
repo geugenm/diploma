@@ -93,21 +93,6 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
 
-% Command for chapters without prefix (like "Introduction")
-\newcommand{\nonPrefixChapter}[1]{
-	\titleformat{\chapter}[display]
-	{\normalfont\large\bfseries\centering}
-	{}{0pt}{\large\centering}
-	\titlespacing*{\chapter}{0pt}{0pt}{15pt}
-
-	\chapter{#1}
-
-	\titleformat{\chapter}[display]
-	{\normalfont\large\bfseries\centering}
-	{\chaptertitlename\ \thechapter}{0pt}{\large\centering}
-	\titlespacing*{\chapter}{0pt}{0pt}{15pt}
-}
-
 %-------------------------------------------------------------------------------
 %    Table configuration
 %-------------------------------------------------------------------------------
