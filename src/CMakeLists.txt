@@ -8,6 +8,8 @@ add_latex_document(
     intro.tex
     satnogs_overview.tex
     polaris_overview.tex
+    analysis.tex
+    specifications.tex
     hyphenation.tex
     attachments.tex
     ending.tex
