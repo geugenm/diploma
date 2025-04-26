@@ -1,18 +1,13 @@
-\renewcommand{\chaptermark}[1]{\markboth{}{}}
-\renewcommand{\sectionmark}[1]{\markright{\arabic{section}.\ #1}}
+\chapter{Приложения}
 
-% Fix for malformed section formatting
-\titleformat{\section}[block]{\large\bfseries\filcenter}{}{0em}{}
-\chapter*{Приложения}
+\newcommand{\nsection}[1]{%
+  \phantomsection
+  \section*{#1}
+  \addcontentsline{toc}{section}{#1}
+}
+\setcounter{section}{1}
 
-\section{Приложение \arabic{section}}
-\label{subsec:old_polaris_learn_config}
-
-В данном приложении представлена старая конфигурация, используемая для формирования нейронного ансамбля с помощью алгоритма XGBoost.
-
-%\lstinputlisting[language=Java, label={lst:old_polaris_config}, caption=Конфигурация XGBoost]{../code/old_polaris_cfg.json}
-
-\section{Приложение \arabic{section}}
+\nsection{Приложение \arabic{section}}
 \label{subsec:attachement_cubesat_design}
 
 \begin{sidewaysfigure}[htbp]
@@ -20,7 +15,3 @@
     \includegraphics[width=1.0\linewidth]{img/cubesat_design.png}
     \caption{Спецификация блока спутника типа CubeSat}
 \end{sidewaysfigure}
-
-
-
-
