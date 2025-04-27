@@ -6,8 +6,8 @@ add_latex_document(
     INPUTS
     bsu.cls
     intro.tex
-    satnogs_overview.tex
-    polaris_overview.tex
+    satnogs.tex
+    polaris.tex
     analysis.tex
     specifications.tex
     hyphenation.tex
