@@ -12,15 +12,7 @@
 %    Fonts and typography
 %-------------------------------------------------------------------------------
 \RequirePackage{fontspec}
-\setmainfont[
-	Path=../fonts/,
-	UprightFont=*-regular,
-	BoldFont=*-bold,
-	ItalicFont=*-italic,
-	BoldItalicFont=*-italic,
-	Extension=.ttf,
-	Ligatures=TeX,
-]{times_new_roman}
+\setmainfont{Times New Roman}
 
 %-------------------------------------------------------------------------------
 %    Core packages
@@ -187,7 +179,7 @@
 			{Дипломная работа}
 		\end{center}
 
-		\vspace{2.0cm}
+		\vspace{1.0cm}
 
 		\hfill
 		\parbox{17em}{
