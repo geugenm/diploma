@@ -17,24 +17,21 @@ elseif(FIREFOX_EXECUTABLE)
 else()
     message(
         FATAL_ERROR
-            "[mermaid] No suitable browser found for Mermaid rendering. Please install chromium, chrome, or firefox."
-        )
+        "[mermaid] No suitable browser found for Mermaid rendering. Please install chromium, chrome, or firefox."
+    )
 endif()
 
 message(
     STATUS
-        "[mermaid] using browser: ${mermaid_browser_executable} (type: ${mermaid_browser_type})"
-    )
+    "[mermaid] using browser: ${mermaid_browser_executable} (type: ${mermaid_browser_type})"
+)
 
-file(
-    GLOB
-    mermaid_files
-    CONFIGURE_DEPENDS
-    *.mmd)
+file(GLOB mermaid_files CONFIGURE_DEPENDS *.mmd)
 
 foreach(mermaid_file ${mermaid_files})
     get_filename_component(mermaid_name ${mermaid_file} NAME_WE)
-    set(mermaid_output_png ${CMAKE_CURRENT_BINARY_DIR}/${mermaid_name}.png)
+    # TODO: make it a separate currect directory, now temp fix for overleaf ease
+    set(mermaid_output_png ${CMAKE_CURRENT_LIST_DIR}/../img/${mermaid_name}.png)
 
     add_custom_command(
         OUTPUT ${mermaid_output_png}
@@ -47,10 +44,15 @@ foreach(mermaid_file ${mermaid_files})
         DEPENDS ${mermaid_file}
         COMMENT
             "[mermaid] compiling png: '${mermaid_file}' -> '${mermaid_output_png}'"
-        VERBATIM USES_TERMINAL)
+        VERBATIM
+        USES_TERMINAL
+    )
 
     list(APPEND mermaid_generated_pngs ${mermaid_output_png})
 endforeach()
 
-add_custom_target(generate_mermaid_diagrams ALL
-                  DEPENDS ${mermaid_generated_pngs})
+add_custom_target(
+    generate_mermaid_diagrams
+    ALL
+    DEPENDS ${mermaid_generated_pngs}
+)
