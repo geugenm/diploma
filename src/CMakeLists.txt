@@ -4,20 +4,20 @@ set(PDFLATEX_COMPILER lualatex)
 add_latex_document(
     main.tex
     INPUTS
-    bsu.cls
-    intro.tex
-    satnogs.tex
-    polaris.tex
     analysis.tex
-    specifications.tex
-    hyphenation.tex
     attachments.tex
+    bsu.cls
     ending.tex
+    hyphenation.tex
+    intro.tex
+    polaris.tex
+    satnogs.tex
     BIBFILES
     references.bib
     USE_BIBLATEX
     TARGET_NAME
-    main)
+    main
+)
 
 unset(PDFLATEX_COMPILER)
 
@@ -27,7 +27,8 @@ add_dependencies(
     ${latex_document_target}_pdf
     generate_mermaid_diagrams
     create_fonts_symlink
-    create_img_symlink)
+    create_img_symlink
+)
 
 if(ZATHURA)
     add_custom_target(
@@ -37,22 +38,24 @@ if(ZATHURA)
         DEPENDS ${latex_document_target}_pdf
         COMMENT
             "[zathura]: opening pdf '${CMAKE_CURRENT_BINARY_DIR}/${latex_document_target}.pdf'"
-        VERBATIM USES_TERMINAL)
+        VERBATIM
+        USES_TERMINAL
+    )
 endif()
 
-file(
-    GLOB_RECURSE
-    tex_files_to_format
-    CONFIGURE_DEPENDS
-    *.tex)
+file(GLOB_RECURSE tex_files_to_format CONFIGURE_DEPENDS *.tex)
 foreach(tex_file ${tex_files_to_format})
-    add_test(NAME "latexindent -k '${tex_file}'"
-             COMMAND ${CMAKE_COMMAND} -E env ${LATEXINDENT} -k ${tex_file}
-             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    add_test(
+        NAME "latexindent -k '${tex_file}'"
+        COMMAND ${CMAKE_COMMAND} -E env ${LATEXINDENT} -k ${tex_file}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
 endforeach()
 
 set(extensions pdf log)
 foreach(ext ${extensions})
-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${latex_document_target}.${ext}
-            DESTINATION pdf)
+    install(
+        FILES ${CMAKE_CURRENT_BINARY_DIR}/${latex_document_target}.${ext}
+        DESTINATION pdf
+    )
 endforeach()
