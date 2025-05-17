@@ -1,16 +1,16 @@
-\renewcommand{\chaptermark}[1]{\markboth{}{}}
+\newcommand{\appsection}[2]{%
+  \refstepcounter{section}%
+  \section*{Приложение~\Alph{section}\\#1}
+  \addcontentsline{toc}{section}{Приложение~\Alph{section}. #1}
+  \label{#2}
+}
 
-\chapter*{Приложения}
-
-\section{Приложение \arabic{section}}
-\label{subsec:attachement_cubesat_design}
+\appsection{Спецификация блока спутника типа CubeSat}{attachement_cubesat_design}
 
 \begin{sidewaysfigure}[htbp]
-	\centering
-	\includegraphics[width=1.0\linewidth]{cubesat_design.png}
-	\caption{Спецификация блока спутника типа CubeSat}
+    \centering
+    \includegraphics[width=1.0\linewidth]{cubesat_design.png}
+    \caption{Спецификация спутника типа CubeSat}
 \end{sidewaysfigure}
-
-
 
 
