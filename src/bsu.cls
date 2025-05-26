@@ -12,7 +12,7 @@
 %    Fonts and typography
 %-------------------------------------------------------------------------------
 \RequirePackage{fontspec}
-\setmainfont{Times New Roman}
+\setmainfont{Liberation Serif}
 
 %-------------------------------------------------------------------------------
 %    Core packages
