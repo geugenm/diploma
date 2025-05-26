@@ -18,7 +18,8 @@
 %    Core packages
 %-------------------------------------------------------------------------------
 \RequirePackage{graphicx}
-\RequirePackage[a4paper, margin=2cm, right=2cm, includefoot]{geometry}
+% BSU margins: left 30mm, right 10mm, top/bottom 20mm
+\RequirePackage[a4paper, left=30mm, right=10mm, top=20mm, bottom=20mm, includefoot]{geometry}
 \RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
 \RequirePackage{enumitem}
@@ -39,7 +40,25 @@
 
 \setlength{\emergencystretch}{10em}
 
+%-------------------------------------------------------------------------------
+%    Page numbering and headers/footers (BSU standard)
+%-------------------------------------------------------------------------------
 \pagenumbering{arabic}
+
+% Page numbering at bottom center as per BSU requirements
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Special style for chapter pages
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
 
 %-------------------------------------------------------------------------------
 %    List configuration
@@ -47,39 +66,39 @@
 \setlist[itemize]{noitemsep, topsep=0pt, partopsep=0pt, parsep=0pt}
 
 %-------------------------------------------------------------------------------
-%    Heading configuration
+%    Heading configuration (BSU style)
 %-------------------------------------------------------------------------------
-% Chapter format
+% Chapter format - centered, uppercase per BSU requirements
 \titleformat{\chapter}[display]
 {\normalfont\large\bfseries\centering}
-{\chaptertitlename\ \thechapter}
+{\MakeUppercase{\chaptertitlename\ \thechapter}}
 {0pt}
-{\large\centering}
+{\large\centering\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{0pt}{15pt}
 
-% Section format
+% Section format with proper BSU indentation
 \titleformat{\section}[hang]
 {\normalfont\Large\bfseries}
-{\hspace*{1cm}\thesection}
+{\thesection}
 {1em}
 {\raggedright}
-\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\section}{1.25cm}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
 % Subsection format
 \titleformat{\subsection}[hang]
 {\normalfont\bfseries}
-{\hspace*{1cm}\thesubsection}
+{\thesubsection}
 {1em}
 {\raggedright}
-\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsection}{1.25cm}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 % Subsubsection format
 \titleformat{\subsubsection}[hang]
 {\normalfont\bfseries}
-{\hspace*{1cm}\thesubsubsection}
+{\thesubsubsection}
 {1em}
 {\raggedright}
-\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+\titlespacing*{\subsubsection}{1.25cm}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 % Header/footer marks
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
@@ -131,10 +150,10 @@
 \renewcommand{\thefootnote}{\arabic{footnote}}
 
 %-------------------------------------------------------------------------------
-%    Line spacing and paragraph configuration
+%    Line spacing and paragraph configuration (BSU requirements)
 %-------------------------------------------------------------------------------
-\onehalfspacing
-\setlength{\parindent}{1.25cm}
+\onehalfspacing % 1.5 spacing as required by BSU
+\setlength{\parindent}{1.25cm} % BSU standard paragraph indent
 \linespread{1.5}
 
 %-------------------------------------------------------------------------------
@@ -156,10 +175,39 @@
 \renewcommand{\thefigure}{\@arabic\c@figure}
 
 %-------------------------------------------------------------------------------
-%    Title page
+%    BSU-specific environments
+%-------------------------------------------------------------------------------
+% Abstract/Summary page (реферат)
+\newenvironment{bsuabstract}{%
+	\clearpage
+	\thispagestyle{empty}
+	\begin{center}
+		\textbf{\large РЕФЕРАТ}
+	\end{center}
+	\vspace{1em}
+	\addcontentsline{toc}{chapter}{РЕФЕРАТ}
+}{\clearpage}
+
+% List of abbreviations
+\newenvironment{abbreviations}{%
+	\clearpage
+	\chapter*{ПЕРЕЧЕНЬ УСЛОВНЫХ ОБОЗНАЧЕНИЙ}
+	\addcontentsline{toc}{chapter}{ПЕРЕЧЕНЬ УСЛОВНЫХ ОБОЗНАЧЕНИЙ}
+}{}
+
+% Conclusion environment
+\newenvironment{conclusion}{%
+	\clearpage
+	\chapter*{ЗАКЛЮЧЕНИЕ}
+	\addcontentsline{toc}{chapter}{ЗАКЛЮЧЕНИЕ}
+}{}
+
+%-------------------------------------------------------------------------------
+%    Title page (BSU format)
 %-------------------------------------------------------------------------------
 \newcommand{\mytitlepage}{
 	\begin{titlepage}
+		\thispagestyle{empty} % No page number on title page per BSU requirements
 		\begin{center}
 			\textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ РЕСПУБЛИКИ БЕЛАРУСЬ\\
 				БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ\\
@@ -204,6 +252,11 @@
 }
 
 %-------------------------------------------------------------------------------
+%    Table of contents customization (BSU style)
+%-------------------------------------------------------------------------------
+\renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
+
+%-------------------------------------------------------------------------------
 %    Document initialization
 %-------------------------------------------------------------------------------
 \AtBeginDocument{
@@ -213,7 +266,8 @@
 	\tableofcontents
 	\thispagestyle{empty}
 	\clearpage
-	\setcounter{page}{1}
+	\setcounter{page}{1} % Start numbering after TOC per BSU requirements
 }
 
 \endinput
+
