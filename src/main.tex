@@ -15,23 +15,31 @@
 
 \usepackage{tocbibind}
 \usepackage{titlesec}
+
+\usepackage{totcount}
 \usepackage{etoolbox}
 
-
 \usepackage{siunitx}
+\usepackage{lastpage}
+
+
+\usepackage[figure,table,equation]{totalcount}
+
+
+
 \usepackage[backend=biber, style=numeric]{biblatex}
 
 \DeclareSortingTemplate{title}{
-  \sort{
-    \field{title}
-  }
+\sort{
+\field{title}
+}
 }
 
 \addbibresource{references.bib}
 \DeclareNameAlias{sortname}{family-given}
 
 \title{Оценка влияния солнечной активности на работу бортовых систем
-  низкоорбитальных спутников с использованием алгоритма машинного обучения
+низкоорбитальных спутников с использованием алгоритма машинного обучения
 XGBoost и построения графа связности}
 
 \graphicspath{{../img}{../mermaid}}
@@ -41,6 +49,8 @@ XGBoost и построения графа связности}
 \begin{document}
 
 \input{hyphenation}
+
+\input{ref}
 
 \input{intro}
 
