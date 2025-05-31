@@ -7,6 +7,7 @@
 \usepackage{siunitx}           % Единицы измерения (СИ)
 
 \usepackage{microtype}
+\captionsetup[figure]{justification=centering}
 
 % Графика и таблицы
 \usepackage{graphicx}          % Включение изображений  
@@ -19,9 +20,53 @@
 \usepackage{pgfplots}          % Графики и диаграммы
 \pgfplotsset{compat=1.18}      % Совместимость
 
+\usepackage{enumitem}
+
+
 % Библиография (современный biblatex)
-\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\usepackage[backend=biber, style=numeric, sorting=none, block=none]{biblatex}
+\DeclareFieldFormat{labelnumberwidth}{#1.}
 \addbibresource{references.bib}
+
+
+\defbibenvironment{paragraphbib}%
+  {\list{}%
+    {% Parameter block - aligned for readability
+     \setlength{\leftmargin}{0pt}%          % No left margin
+     \setlength{\itemindent}{\parindent}%   % Paragraph-style indent
+     \setlength{\labelwidth}{0pt}%          % No label box
+     \setlength{\labelsep}{0pt}%            % No separation 
+     \setlength{\listparindent}{0pt}%       % No continuation indent
+     \setlength{\itemsep}{\bibitemsep}%     % Standard item spacing
+     \setlength{\parsep}{\bibparsep}%       % Standard paragraph spacing
+     \renewcommand*{\makelabel}[1]{##1}%    % Pass-through label
+    }%
+  }%
+  {\endlist}%
+  {% Item definition - number as part of text
+   \item[\printfield{labelnumber}.\space]%
+  }
+
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+
+\newcommand{\mytodo}[2][red!85!black]{%
+  \clearpage
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[#1] (current page.south west) rectangle (current page.north east);
+    \node[
+      align=center,
+      text width=0.6\paperwidth,
+      text=white,
+      font=\bfseries\Huge,
+      anchor=center
+    ] at (current page.center) {\faTools\quad #2};
+  \end{tikzpicture}
+  \vspace*{\fill}
+  \clearpage
+}
+
 
 % === НАВИГАЦИЯ И СТРУКТУРА === %
 % Управление оглавлением (ИСПРАВЛЕНО: добавлена опция nottoc)
@@ -50,49 +95,88 @@
 % Стиль библиографии
 \DeclareNameAlias{sortname}{family-given}
 
+\usepackage{tocloft}
+% Центрированный заголовок "ОГЛАВЛЕНИЕ"
+\setlength{\cftbeforetoctitleskip}{8pt}
+\setlength{\cftaftertoctitleskip}{10pt}
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries\MakeUppercase}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
+
+% ПРАВИЛЬНАЯ настройка отступов - без отступа, ширина 5em
+\cftsetindents{chapter}{0pt}{3.5em}
+
+% Префикс "Глава" перед номером
+\renewcommand{\cftchappresnum}{Глава~}
+\renewcommand{\cftchapaftersnum}{~}
+
+% Точки для всех записей включая главы
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% Убираем жирный шрифт в содержании для глав
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+
 \begin{document}
 
 % === ТИТУЛЬНАЯ СТРАНИЦА === %
-\bsutitle{\MakeUppercase{Оценка влияния солнечной активности на работу бортовых систем
+\bsutitle{
+    Кафедра физики и аэрокосмических технологий
+}{
+    ГЛЕБА Евгений Михайлович
+}{
+    Оценка влияния солнечной активности на работу бортовых систем
 низкоорбитальных спутников с использованием алгоритма машинного обучения
-XGBoost и построения графа связности}}{Дипломная работа}{Глеба Евгения Михайловича \\
-обучающегося 4 курса специальности \\
-«Аэрокосмические радиоэлектронные и информационные системы и технологии»}{
-Баранова Василина Сергеевна \\
-старший преподаватель \\
-кафедры физики и аэрокосмических технологий}
+XGBoost и построения графа связности
+}{
+    Дипломная работа
+}{
+    Научный руководитель:\\
+    старший преподаватель,\\
+    В. С. Баранова
+}{
+    Зав. кафедрой физики и аэрокосмических технологий\\
+    доктор физико-математических наук, профессор В.А. Саечников
+}{
+    Минск
+}
 
 \input{hyphenation}             % Переносы слов
 
+\setcounter{page}{2}
+
 \begin{bsuabstract}
-\input{abstract}                % TODO: Переименовать в 'abstract-content' для ясности
+\input{abstract}
 \end{bsuabstract}
+
+\mytodo{TODO: Реферат на английском}
+\mytodo{TODO: Реферат на белорусском}
 
 % === ОГЛАВЛЕНИЕ === %
 \tableofcontents
-\thispagestyle{empty}
 \clearpage
-\setcounter{page}{1}
 
 % === ОСНОВНОЙ КОНТЕНТ === %
-\input{intro}                   % TODO: Переименовать в 'introduction'
+\begin{introduction}
+\input{intro}
+\end{introduction}
 
 \newpage
-\input{satnogs}                 % TODO: Переименовать в 'satnogs-analysis' 
+\input{satnogs}
 
 \newpage  
-\input{polaris}                 % TODO: Переименовать в 'polaris-system'
+\input{polaris}
 
-\input{analysis}                % TODO: Переименовать в 'data-analysis'
+\input{analysis}
 
 \begin{conclusion}
-\input{ending}                  % TODO: Переименовать в 'conclusion-content'
+\input{ending}
 \end{conclusion}
 
 % === БИБЛИОГРАФИЯ === %
 \newpage
 
-\printbibliography[heading=bibintoc,title={Список использованной литературы}]
+\printbibliography[heading=bibintoc,title={Список использованной литературы},env=paragraphbib]
 
 % === ПРИЛОЖЕНИЯ === %
 \newpage

@@ -172,78 +172,92 @@
 % Abstract environment
 \newenvironment{bsuabstract}{%
     \clearpage
-    \thispagestyle{empty}
-    \begin{center}
-        \textbf{\large РЕФЕРАТ}
-    \end{center}
-    \vspace{1em}
+    \chapter*{РЕФЕРАТ}
 }{\clearpage}
+
+\newenvironment{introduction}{%
+    \clearpage
+    \chapter*{ВВЕДЕНИЕ}
+    \addcontentsline{toc}{chapter}{Введение}
+}{}
 
 % Conclusion environment
 \newenvironment{conclusion}{%
     \clearpage
     \chapter*{ЗАКЛЮЧЕНИЕ}
-    \addcontentsline{toc}{chapter}{ЗАКЛЮЧЕНИЕ}
+    \addcontentsline{toc}{chapter}{Заключение}
 }{}
 
 
 \newtotcounter{appendixsections}
-    
+
 \newcommand{\appsection}[2]{
+        \setcounter{figure}{0}
         \stepcounter{appendixsections}% автоматический подсчет
-        \refstepcounter{section}
-        \section*{Приложение~\Alph{section}. #1}
-        \addcontentsline{toc}{section}{Приложение~\Alph{section}.#1}
+        \refstepcounter{chapter}
+        \chapter*{Приложение~\Alph{chapter} #1}
+        \addcontentsline{toc}{chapter}        {Приложение~\Alph{chapter} #1}
         \label{#2}
 }
     
 \newenvironment{attachements}{
     \clearpage
-    \chapter*{ПРИЛОЖЕНИЯ}
-    \addcontentsline{toc}{chapter}{ПРИЛОЖЕНИЯ}
+    \renewcommand{\thefigure}{\Alph{chapter}.\arabic{figure}}
 }{}
 
 %==============================================================================
-% TITLE PAGE COMMAND
+% TITLE PAGE COMMAND (Modern LaTeX 2024 - Minimal Code, Maximum Output)
 %==============================================================================
-\newcommand{\bsutitle}[4]{%
+\NewDocumentCommand{\bsutitle}{m m m m m m m}{%
     \begin{titlepage}
         \thispagestyle{empty}
-        \begin{center}
-            \textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ РЕСПУБЛИКИ БЕЛАРУСЬ\\
-                БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ\\
-                ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
-
-            \vspace{0.5cm}
-            Кафедра физики и аэрокосмических технологий
-        \end{center}
-
-        \vspace{2cm}
-
-        \begin{center}
-            \textbf{\Large#1}
-        \end{center}
-
-        \begin{center}
-            {#2}
-        \end{center}
-
-        \vspace{1.0cm}
-
-        \hfill
-        \parbox{17em}{
-            #3
-
-            \vspace{0.5cm}
-
-            #4
+        \centering
+        
+        % Header: Ministry, University, Faculty
+        {\bfseries
+            МИНИСТЕРСТВО ОБРАЗОВАНИЯ РЕСПУБЛИКИ БЕЛАРУСЬ\\
+            БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ\\
+            ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ
         }
-
+        
+        \vspace{0.5cm}
+        \textbf{#1} % Department
+        
         \vfill
+        
+        % Author (uppercase, bold)
+        {#2}
+        
+        \vspace{1.5cm}
+        
+        % Title (large, bold)
+        {\Large\bfseries \MakeUppercase{#3}}
+        
+        \vspace{1cm}
+        #4 % Work type
+        
+        \vfill
+        
+        % Right block: Supervisor + Approval + Head
+        \begin{flushright}
+            \begin{minipage}{0.35\textwidth}
+                #5 % Supervisor
+            \end{minipage}
+        \end{flushright}
 
-        \begin{center}
-            Минск, \the\year
-        \end{center}
+        \vspace{1cm}
+        
+        \begin{flushleft}
+                Допущена к защите\\[0.3cm]
+                «\underline{\hspace{1cm}}» \underline{\hspace{3cm}} \the\year~г.
+                
+                \vspace{0.8cm}
+                #6 % Department head
+        \end{flushleft}
+        
+        \vfill
+        #7, \the\year % City, year
+        
     \end{titlepage}
 }
 

@@ -13,7 +13,7 @@
 телеметрии сети наземных станций SatNOGS. Параметры солнечной активности будут
 извлечены из следующих основных источников:
 
-\begin{itemize}
+\begin{itemize}[wide]
 	\item Центр прогнозирования космической погоды (Space Weather Prediction Center, SWPC/SWO) \cite{swpc_noaa_data_souce};
 	\item Центр наблюдения и анализа данных о влиянии Солнца в Брюсселе (Solar Influences Data Analysis Center, S.I.D.C.) \cite{silso_snd_data_source};
 	\item Канадская радиоастрофизическая обсерватория в Пентиктоне \cite{swgc_flux_data_source}.
@@ -476,7 +476,7 @@ Spacemanic~\cite{spacemanic_lasarsat}. Корпус изготовлен из а
 материале~\cite{satnogs_lasarsat, lasar_info}.
 
 Спутник оснащён семью научными приборами~\cite{wiki_lasarsat, lasar_info}:
-\begin{itemize}
+\begin{itemize}[wide]
 	\item Фотодиоды (Solar Panel Photodiodes) - для измерения потерь энергии лазера при прохождении через атмосферу Земли;
 	\item Светодиоды (LED) - для улучшения точности отслеживания спутника с Земли;
 	\item Ретрорефлекторы - для отражения лазерного луча обратно на Землю и его дальнейшего изучения;
@@ -733,19 +733,19 @@ LASP~\cite{core_inspiresat}. Система определения и контр
 
 Интересен каскадный эффект, наблюдаемый на графе
 рис.~\ref{fig:inspiresat_sunspot}:
-\texttt{battery\_current\_amps} $\rightarrow$
-\texttt{deployable\_panel\_current\_milliamps} $\rightarrow$
+\texttt{battery\_current} $\rightarrow$
+\texttt{deployable\_panel\_current} $\rightarrow$
 \texttt{sun\_vector} $\rightarrow$
-\texttt{daxss\_voltage\_volts} $\rightarrow$ \texttt{daxss\_current\_milliamps}.
+\texttt{daxss\_voltage} $\rightarrow$ \texttt{daxss\_current}.
 Такая цепочка связей позволяет проследить комплексное влияние внешних факторов
 на работу научной аппаратуры через изменение энергетического состояния и режимов
 функционирования спутника.
 
 Температурная динамика, отраженная в сильных связях между
-\texttt{battery\_1\_temperature\_celsius}, \texttt{obc\_temperature\_celsius} и
-\texttt{uhf\_temperature\_celsius}, указывает на критическую важность теплового
+\texttt{battery\_1\_temperature}, \texttt{obc\_temperature} и
+\texttt{uhf\_temperature}, указывает на критическую важность теплового
 режима для INSPIRESat-1. При этом связь между температурой и током
-(\texttt{daxss\_current\_milliamps}) может свидетельствовать о влиянии теплового
+(\texttt{daxss\_current}) может свидетельствовать о влиянии теплового
 состояния на эффективность работы научной аппаратуры. Это особенно важно для
 DAXSS, чувствительность которого к тепловым воздействиям может быть
 высокой~\cite{eoportal_inspiresat}.
