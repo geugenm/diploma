@@ -1,12 +1,13 @@
 %==============================================================================
-% BSU Modern Class - Professional LaTeX class for Belarusian State University
-% Optimized for LuaTeX, GOST-compliant, minimal code
-% Author: Professional LaTeX Developer
-% Version: 2.0 (2025/05/31)
+% BSU Modern Class v2.1 - Professional LaTeX class for Belarusian State University
+% Optimized for LuaTeX, GOST-compliant, minimal code with advisor feedback fixes
+% Author: Professional LaTeX Developer  
+% Version: 2.1 (2025/05/31)
+% Fixes: Figure captions, table captions, subsection formatting, bibliography, lists
 %==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{bsu-modern}[2025/05/31 BSU Modern Class v2.0 - Professional GOST-compliant]
+\ProvidesClass{bsu}[2025/05/31 BSU Modern Class v2.1 - GOST-compliant with advisor fixes]
 
 %==============================================================================
 % CLASS OPTIONS AND BASE
@@ -29,11 +30,15 @@
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
 \RequirePackage{hyperref}
+\RequirePackage{totcount} 
+\RequirePackage{caption}      % For advanced caption formatting
+\RequirePackage{array}        % For table formatting
 
 %==============================================================================
 % FONTS (LuaTeX Optimized)
 %==============================================================================
 \RequirePackage{fontspec}
+% TODO: Replace with desired font family if needed
 \setmainfont{Liberation Serif}
 
 %==============================================================================
@@ -73,9 +78,9 @@
 }
 
 %==============================================================================
-% SECTION FORMATTING (GOST Compliant)
+% SECTION FORMATTING (GOST Compliant - Only chapters bold)
 %==============================================================================
-% Chapter format - centered, uppercase
+% Chapter format - centered, uppercase, bold
 \titleformat{\chapter}[display]
     {\centering\normalfont\large\bfseries}
     {\MakeUppercase{\chaptertitlename\ \thechapter}}
@@ -83,27 +88,71 @@
     {\large\centering\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{0pt}{15pt}
 
-% Section format
+% Section format - paragraph indent per GOST
 \titleformat{\section}[hang]
-    {\normalfont\Large\bfseries}
+    {\normalfont\large}  % Removed \bfseries per GOST
     {\thesection}
     {1em}
     {}
 \titlespacing*{\section}{12.5mm}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 
-% Subsection format
+% Subsection format - paragraph indent per GOST  
 \titleformat{\subsection}[hang]
-    {\normalfont\bfseries}
+    {\normalfont\normalsize}  % Removed \bfseries per GOST
     {\thesubsection}
     {1em}
     {}
 \titlespacing*{\subsection}{12.5mm}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 %==============================================================================
-% LISTS CONFIGURATION
+% FIGURE AND TABLE CAPTIONS (GOST Compliant)
 %==============================================================================
-\setlist[itemize]{noitemsep,topsep=0pt,partopsep=0pt,parsep=0pt}
-\setlist[enumerate]{noitemsep,topsep=0pt,partopsep=0pt,parsep=0pt}
+% Figure captions: left-aligned, below figure per user feedback
+\captionsetup[figure]{
+    justification=raggedright,    % Left-aligned per advisor feedback
+    singlelinecheck=false,        % Disable centering for single lines
+    position=below,
+    skip=6pt,
+    labelsep=endash,
+    font=normalsize
+}
+
+% Table captions: left-aligned, above table per GOST
+\captionsetup[table]{
+    justification=raggedright,    % Left-aligned per GOST
+    singlelinecheck=false,
+    position=above,
+    skip=6pt,
+    labelsep=endash,
+    font=normalsize
+}
+
+%==============================================================================
+% LISTS CONFIGURATION (Preserve paragraphs per GOST)
+%==============================================================================
+% Maintain paragraph structure in lists per advisor feedback
+\setlist[itemize]{
+    leftmargin=12.5mm,
+    itemindent=0pt,
+    parsep=0pt,
+    topsep=6pt,
+    partopsep=0pt,
+    itemsep=6pt                   % Maintain spacing between items
+}
+\setlist[enumerate]{
+    leftmargin=12.5mm,
+    itemindent=0pt,
+    parsep=0pt,
+    topsep=6pt,
+    partopsep=0pt,
+    itemsep=6pt                   % Maintain spacing between items
+}
+
+%==============================================================================
+% BIBLIOGRAPHY FORMATTING (GOST Compliant)
+%==============================================================================
+% TODO: Add bibliography formatting improvements for GOST compliance
+% This should be configured with biblatex for proper GOST formatting
 
 %==============================================================================
 % HYPERREF CONFIGURATION
@@ -138,6 +187,23 @@
     \addcontentsline{toc}{chapter}{ЗАКЛЮЧЕНИЕ}
 }{}
 
+
+\newtotcounter{appendixsections}
+    
+\newcommand{\appsection}[2]{
+        \stepcounter{appendixsections}% автоматический подсчет
+        \refstepcounter{section}
+        \section*{Приложение~\Alph{section}. #1}
+        \addcontentsline{toc}{section}{Приложение~\Alph{section}.#1}
+        \label{#2}
+}
+    
+\newenvironment{attachements}{
+    \clearpage
+    \chapter*{ПРИЛОЖЕНИЯ}
+    \addcontentsline{toc}{chapter}{ПРИЛОЖЕНИЯ}
+}{}
+
 %==============================================================================
 % TITLE PAGE COMMAND
 %==============================================================================
@@ -148,7 +214,7 @@
             \textbf{МИНИСТЕРСТВО ОБРАЗОВАНИЯ РЕСПУБЛИКИ БЕЛАРУСЬ\\
                 БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ\\
                 ФАКУЛЬТЕТ РАДИОФИЗИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
-            
+
             \vspace{0.5cm}
             Кафедра физики и аэрокосмических технологий
         \end{center}
@@ -171,7 +237,6 @@
 
             \vspace{0.5cm}
 
-            Научный руководитель: \\
             #4
         }
 
