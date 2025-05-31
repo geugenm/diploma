@@ -1,79 +1,99 @@
 \documentclass[14pt, a4paper]{bsu}
 
-% Speed up compilation by disabling images to render
-%\documentclass[draft]{article}
+% === CORE PACKAGES === %
+% Научная типографика и математика
+\usepackage{amsmath}           % Улучшенная математика
+\usepackage{amssymb}           % Математические символы
+\usepackage{siunitx}           % Единицы измерения (СИ)
 
-\usepackage{titling}
-\usepackage{verbatim}
-\usepackage{csquotes}
-\usepackage{longtable}
-\usepackage{pgfplots}
-\usepackage{tikz}
-\usepackage{float}
-\usepackage{amssymb}
-\usepackage{rotating}
+% Графика и таблицы
+\usepackage{graphicx}          % Включение изображений  
+\usepackage{float}             % Улучшенное позиционирование флотов
+\usepackage{longtable}         % Длинные таблицы
+\usepackage{rotating}          % Поворот элементов
 
-\usepackage{tocbibind}
-\usepackage{titlesec}
+% TikZ и PGF для графиков (объединены, tikz уже включает pgf)
+\usepackage{tikz}              % Векторная графика
+\usepackage{pgfplots}          % Графики и диаграммы
+\pgfplotsset{compat=1.18}      % Совместимость
 
-\usepackage{totcount}
-\usepackage{etoolbox}
-
-\usepackage{siunitx}
-\usepackage{lastpage}
-
-
-\usepackage[figure,table,equation]{totalcount}
-
-
-
-\usepackage[backend=biber, style=numeric]{biblatex}
-
-\DeclareSortingTemplate{title}{
-\sort{
-\field{title}
-}
-}
-
+% Библиография (современный biblatex)
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
 \addbibresource{references.bib}
+
+% === НАВИГАЦИЯ И СТРУКТУРА === %
+% Управление оглавлением (ИСПРАВЛЕНО: добавлена опция nottoc)
+\usepackage[nottoc]{tocbibind}  % Убирает "Оглавление" из оглавления
+
+% Подсчет элементов (современный подход)
+\usepackage[figure,table,equation]{totalcount}  % Подсчет фигур/таблиц/уравнений
+\usepackage{lastpage}           % Ссылка на последнюю страницу
+
+% === ТИПОГРАФИКА === %
+\usepackage{csquotes}           % Правильные кавычки
+\usepackage{verbatim}           % Улучшенный verbatim
+
+% === НАСТРОЙКИ === %
+% Путь к изображениям
+\graphicspath{{../img/}{../mermaid/}}
+
+% Метаданные PDF
+\hypersetup{
+    pdftitle={Оценка влияния солнечной активности на работу бортовых систем низкоорбитальных спутников},
+    pdfauthor={Глеб Евгений Михайлович},
+    pdfkeywords={спутники, солнечная активность, машинное обучение, XGBoost},
+    pdfsubject={Дипломная работа}
+}
+
+% Стиль библиографии
 \DeclareNameAlias{sortname}{family-given}
-
-\title{Оценка влияния солнечной активности на работу бортовых систем
-низкоорбитальных спутников с использованием алгоритма машинного обучения
-XGBoost и построения графа связности}
-
-\graphicspath{{../img}{../mermaid}}
-
-\pgfplotsset{compat=1.18}
 
 \begin{document}
 
-\input{hyphenation}
+% === ТИТУЛЬНАЯ СТРАНИЦА === %
+\bsutitle{Оценка влияния солнечной активности на работу бортовых систем
+низкоорбитальных спутников с использованием алгоритма машинного обучения
+XGBoost и построения графа связности}{Дипломная работа}{Глеба Евгения Михайловича \\
+обучающегося 4 курса специальности \\
+«Аэрокосмические радиоэлектронные и информационные системы и технологии»}{Научный руководитель: \\
+Баранова Василина Сергеевна \\
+старший преподаватель \\
+кафедры физики и аэрокосмических технологий}
 
-\input{ref}
+% === ОГЛАВЛЕНИЕ === %
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\setcounter{page}{1}
 
-\input{intro}
+% === ОСНОВНОЙ КОНТЕНТ === %
+\input{hyphenation}             % Переносы слов
+
+\begin{bsuabstract}
+\input{abstract}                % TODO: Переименовать в 'abstract-content' для ясности
+\end{bsuabstract}
+
+\input{intro}                   % TODO: Переименовать в 'introduction'
 
 \newpage
+\input{satnogs}                 % TODO: Переименовать в 'satnogs-analysis' 
 
-\input{satnogs}
+\newpage  
+\input{polaris}                 % TODO: Переименовать в 'polaris-system'
 
+\input{analysis}                % TODO: Переименовать в 'data-analysis'
+
+\begin{conclusion}
+\input{ending}                  % TODO: Переименовать в 'conclusion-content'
+\end{conclusion}
+
+% === БИБЛИОГРАФИЯ === %
 \newpage
-
-\input{polaris}
-
-\input{analysis}
-
-\input{ending}
-
-\newpage
-
 \printbibliography[heading=bibintoc,title={Список использованной литературы}]
 
+% === ПРИЛОЖЕНИЯ === %
 \newpage
-
 \appendix
-
-\input{attachments}
+\input{attachments}             % TODO: Переименовать в 'appendices'
 
 \end{document}

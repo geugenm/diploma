@@ -5,6 +5,7 @@ add_latex_document(
     main.tex
     INPUTS
     analysis.tex
+    abstract.tex
     attachments.tex
     bsu.cls
     ending.tex
