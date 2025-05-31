@@ -177,7 +177,6 @@
         \textbf{\large РЕФЕРАТ}
     \end{center}
     \vspace{1em}
-    \addcontentsline{toc}{chapter}{РЕФЕРАТ}
 }{\clearpage}
 
 % Conclusion environment
