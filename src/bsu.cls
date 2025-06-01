@@ -172,12 +172,12 @@
 % Abstract environment
 \newenvironment{bsuabstract}{%
     \clearpage
-    \chapter*{РЕФЕРАТ}
 }{\clearpage}
 
 \newenvironment{introduction}{%
     \clearpage
     \chapter*{ВВЕДЕНИЕ}
+    \label{intro-start}
     \addcontentsline{toc}{chapter}{Введение}
 }{}
 
@@ -185,6 +185,7 @@
 \newenvironment{conclusion}{%
     \clearpage
     \chapter*{ЗАКЛЮЧЕНИЕ}
+    \label{conclusion-end}
     \addcontentsline{toc}{chapter}{Заключение}
 }{}
 

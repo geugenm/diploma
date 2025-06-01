@@ -73,8 +73,7 @@
 \usepackage[nottoc]{tocbibind}  % Убирает "Оглавление" из оглавления
 
 % Подсчет элементов (современный подход)
-\usepackage[figure,table,equation]{totalcount}  % Подсчет фигур/таблиц/уравнений
-\usepackage{lastpage}           % Ссылка на последнюю страницу
+\usepackage[figure,table]{totalcount}  % Подсчет фигур/таблиц/уравнений
 
 % === ТИПОГРАФИКА === %
 \usepackage{csquotes}           % Правильные кавычки
@@ -91,9 +90,6 @@
     pdfkeywords={спутники, солнечная активность, машинное обучение, XGBoost},
     pdfsubject={Дипломная работа}
 }
-
-% Стиль библиографии
-\DeclareNameAlias{sortname}{family-given}
 
 \usepackage{tocloft}
 % Центрированный заголовок "ОГЛАВЛЕНИЕ"
@@ -117,6 +113,19 @@
 \renewcommand{\cftchapfont}{\normalfont}
 \renewcommand{\cftchappagefont}{\normalfont}
 
+\usepackage{refcount}
+
+\newcommand{\maincontentpages}{%
+  \the\numexpr\getpagerefnumber{conclusion-end}-\getpagerefnumber{intro-start}+1\relax%
+}
+
+\newcounter{totalsources}
+\AtDataInput{\stepcounter{totalsources}}
+
+% === MULTILINGUAL FRAMEWORK ===
+% Based on multilang package principles but enhanced for 2025
+\usepackage{multilang}
+
 \begin{document}
 
 % === ТИТУЛЬНАЯ СТРАНИЦА === %
@@ -136,7 +145,7 @@ XGBoost и построения графа связности
     В. С. Баранова
 }{
     Зав. кафедрой физики и аэрокосмических технологий\\
-    доктор физико-математических наук, профессор В.А. Саечников
+    доктор физико-математических наук, профессор В. А. Саечников
 }{
     Минск
 }
