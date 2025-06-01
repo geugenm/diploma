@@ -31,7 +31,10 @@
 \RequirePackage{amsmath}
 \RequirePackage{hyperref}
 \RequirePackage{totcount}
+
 \RequirePackage{caption}      % For advanced caption formatting
+\captionsetup[figure]{justification=centering}
+
 \RequirePackage{array}        % For table formatting
 
 %==============================================================================
@@ -265,7 +268,27 @@
 %==============================================================================
 % TABLE OF CONTENTS CUSTOMIZATION
 %==============================================================================
+\RequirePackage{tocloft}
+% Центрированный заголовок "ОГЛАВЛЕНИЕ"
+\setlength{\cftbeforetoctitleskip}{8pt}
+\setlength{\cftaftertoctitleskip}{10pt}
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries\MakeUppercase}
+\renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
+
+% ПРАВИЛЬНАЯ настройка отступов - без отступа, ширина 5em
+\cftsetindents{chapter}{0pt}{3.5em}
+
+% Префикс "Глава" перед номером
+\renewcommand{\cftchappresnum}{Глава~}
+\renewcommand{\cftchapaftersnum}{~}
+
+% Точки для всех записей включая главы
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% Убираем жирный шрифт в содержании для глав
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
 
 %==============================================================================
 % DOCUMENT INITIALIZATION
@@ -273,6 +296,60 @@
 \AtBeginDocument{
 	\setlength{\headheight}{14.0pt}
 }
+
+\RequirePackage{refcount}
+
+\newcommand{\maincontentpages}{%
+  \the\numexpr\getpagerefnumber{conclusion-end}-\getpagerefnumber{intro-start}+1\relax%
+}
+
+
+\RequirePackage{xcolor}
+\RequirePackage{fontawesome5}
+
+\newcommand{\bsutodo}[2][red!85!black]{%
+  \clearpage
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[#1] (current page.south west) rectangle (current page.north east);
+    \node[
+      align=center,
+      text width=0.6\paperwidth,
+      text=white,
+      font=\bfseries\Huge,
+      anchor=center
+    ] at (current page.center) {\faTools\quad #2};
+  \end{tikzpicture}
+  \vspace*{\fill}
+  \clearpage
+}
+
+% Библиография (современный biblatex)
+\RequirePackage[backend=biber, style=numeric, sorting=none, block=none]{biblatex}
+\DeclareFieldFormat{labelnumberwidth}{#1.}
+\addbibresource{references.bib}
+
+
+\defbibenvironment{paragraphbib}%
+  {\list{}%
+    {% Parameter block - aligned for readability
+     \setlength{\leftmargin}{0pt}%          % No left margin
+     \setlength{\itemindent}{\parindent}%   % Paragraph-style indent
+     \setlength{\labelwidth}{0pt}%          % No label box
+     \setlength{\labelsep}{0pt}%            % No separation
+     \setlength{\listparindent}{0pt}%       % No continuation indent
+     \setlength{\itemsep}{\bibitemsep}%     % Standard item spacing
+     \setlength{\parsep}{\bibparsep}%       % Standard paragraph spacing
+     \renewcommand*{\makelabel}[1]{##1}%    % Pass-through label
+    }%
+  }%
+  {\endlist}%
+  {% Item definition - number as part of text
+   \item[\printfield{labelnumber}.\space]%
+  }
+
+\newcounter{totalsources}
+\AtDataInput{\stepcounter{totalsources}}
 
 \endinput
 %==============================================================================
