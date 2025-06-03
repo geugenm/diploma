@@ -324,6 +324,8 @@
   \clearpage
 }
 
+\RequirePackage[normalem]{ulem}
+
 % Библиография (современный biblatex)
 \RequirePackage[backend=biber, style=numeric, sorting=none, block=none]{biblatex}
 
