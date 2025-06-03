@@ -32,6 +32,12 @@
 \usepackage{csquotes}           % Правильные кавычки
 \usepackage{verbatim}           % Улучшенный verbatim
 
+
+\usepackage{setspace}
+\usepackage{ulem}
+\usepackage{array}
+\usepackage{calc}
+
 % === НАСТРОЙКИ === %
 % Путь к изображениям
 \graphicspath{{../img/}{../mermaid/}}
@@ -69,6 +75,7 @@
 }
 
 \input{hyphenation}             % Переносы слов
+\input{task}
 
 \setcounter{page}{2}
 
@@ -100,7 +107,7 @@
 % === БИБЛИОГРАФИЯ === %
 \newpage
 
-\printbibliography[heading=bibintoc,title={Список использованной литературы},env=paragraphbib]
+\printbibliography[heading=bibintoc,title={Список использованной литературы}]
 
 % === ПРИЛОЖЕНИЯ === %
 \newpage

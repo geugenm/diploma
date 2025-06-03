@@ -42,7 +42,7 @@
 %==============================================================================
 \RequirePackage{fontspec}
 % TODO: Replace with desired font family if needed
-\setmainfont{Liberation Serif}
+\setmainfont{Times New Roman}
 
 %==============================================================================
 % PAGE LAYOUT (GOST/BSU Compliant)
@@ -326,27 +326,10 @@
 
 % Библиография (современный biblatex)
 \RequirePackage[backend=biber, style=numeric, sorting=none, block=none]{biblatex}
+
 \DeclareFieldFormat{labelnumberwidth}{#1.}
 \addbibresource{references.bib}
 
-
-\defbibenvironment{paragraphbib}%
-  {\list{}%
-    {% Parameter block - aligned for readability
-     \setlength{\leftmargin}{0pt}%          % No left margin
-     \setlength{\itemindent}{\parindent}%   % Paragraph-style indent
-     \setlength{\labelwidth}{0pt}%          % No label box
-     \setlength{\labelsep}{0pt}%            % No separation
-     \setlength{\listparindent}{0pt}%       % No continuation indent
-     \setlength{\itemsep}{\bibitemsep}%     % Standard item spacing
-     \setlength{\parsep}{\bibparsep}%       % Standard paragraph spacing
-     \renewcommand*{\makelabel}[1]{##1}%    % Pass-through label
-    }%
-  }%
-  {\endlist}%
-  {% Item definition - number as part of text
-   \item[\printfield{labelnumber}.\space]%
-  }
 
 \newcounter{totalsources}
 \AtDataInput{\stepcounter{totalsources}}
