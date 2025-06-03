@@ -1,0 +1,151 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[margin=2cm]{geometry}
+\usepackage{setspace}
+\usepackage{ulem}
+\usepackage{array}
+\usepackage{calc}
+
+\setmainfont{Times New Roman}
+\pagestyle{empty}
+\setstretch{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\newcommand{\ufield}[2]{\uline{\makebox[#1][l]{\hspace{0.15cm}#2\hspace{0.15cm}}}}
+\newcommand{\fullfield}[1]{\uline{\makebox[\textwidth][l]{\hspace{0.15cm}#1\hspace{0.15cm}}}}
+\newcommand{\remainingfield}[2]{\uline{\makebox[\textwidth-#1][l]{\hspace{0.15cm}#2\hspace{0.15cm}}}}
+
+\begin{document}
+
+\begin{center}
+\textbf{\large Белорусский государственный университет}
+\end{center}
+
+\noindent Кафедра \remainingfield{1.8cm}{физики и аэрокосмических технологий}
+
+\vspace{1cm}
+
+\begin{flushright}
+\begin{tabular}{@{}l@{}}
+УТВЕРЖДАЮ \\[0.4cm]
+Заведующий (начальник) \\
+кафедрой \\[0.8cm]
+\begin{tabular}{@{}l@{\hspace{1.8cm}}l@{}}
+\ufield{4.2cm}{} & \ufield{5.5cm}{Саечников В.А.} \\[0.1cm]
+\makebox[4.2cm][c]{\scriptsize (подпись)} & \makebox[5.5cm][c]{\scriptsize (фамилия, инициалы)}
+\end{tabular} \\[0.8cm]
+\ufield{3cm}{} 20\ufield{1cm}{} г.
+\end{tabular}
+\end{flushright}
+
+\vspace{0.5cm}
+
+\begin{center}
+\textbf{\large ЗАДАНИЕ} \\[0.3cm]
+\textbf{\large на дипломную работу (дипломный проект)}
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent Обучающемуся \remainingfield{3.2cm}{Глеба Евгению Михайловичу} \\[0.cm]
+\hspace*{3.2cm}\makebox[\textwidth-3.2cm][c]{\scriptsize (фамилия, собственное имя, отчество (если таковое имеется))}
+
+\vspace{0.6cm}
+
+\noindent Курс \ufield{1.8cm}{4} \hspace{1.5cm} Учебная группа \remainingfield{7.8cm}{8АРИСТ}
+
+\vspace{0.6cm}
+
+\noindent Специальность \remainingfield{3.2cm}{1-31 04 04 «Аэрокосмические радиоэлектронные и информационные системы} \\[0.4cm]
+\fullfield{и технологии». Специализация 1-31 04 04 01 «Глобальные навигационные и телекоммуника-} \\[0.4cm]
+\fullfield{ционные системы»}
+
+\vspace{0.8cm}
+
+\noindent Тема дипломной работы (дипломного проекта) \remainingfield{8.5cm}{Оценка влияния солнечной активности на ра-} \\[0.4cm]
+\fullfield{боту бортовых систем низкоорбитальных спутников с использованием алгоритма машинно-} \\[0.4cm]
+\fullfield{го обучения XGBoost и построения графа связности} \\[0.1cm]
+\hspace*{5cm}\makebox[\textwidth-9cm][c]{\scriptsize (наименование темы)} \\[0.3cm]
+
+
+\noindent Утверждена приказом ректора БГУ от \ufield{3.5cm}{25.11.2024} № \remainingfield{11cm}{1358-ПС} \\
+
+\vspace{0.8cm}
+
+\noindent Исходные данные к дипломной работе (дипломному проекту) \remainingfield{11cm}{Данные космической погоды,} \\[0.4cm]
+\fullfield{телеметрия спутников SatNOGS, алгоритмы машинного обучения XGBoost, Python библиотеки, } \\[0.4cm]
+\fullfield{методы анализа временных рядов и построения графов}
+
+\vspace{0.8cm}
+
+\noindent Перечень подлежащих разработке вопросов или краткое содержание \\
+расчетно-пояснительной записки \remainingfield{6cm}{Анализ влияния солнечной активности на функционирование} \\[0.4cm]
+\fullfield{спутниковых систем, разработка и обучение модели XGBoost, построение графа связности,} \\[0.4cm]
+\fullfield{валидация результатов прогнозирования}
+
+\vspace{0.8cm}
+
+\noindent Перечень графического материала (с точным указанием \\
+обязательных чертежей и графиков) \remainingfield{6.5cm}{} \\[0.4cm]
+\fullfield{} \\[0.4cm]
+\fullfield{}
+
+\vspace{0.8cm}
+
+\noindent Консультанты по дипломной работе (дипломному проекту) \\
+(с указанием разделов, по которым они консультируют) \remainingfield{10.5cm}{} \\[0.4cm]
+\fullfield{} \\[0.4cm]
+\fullfield{}
+
+\vspace{0.8cm}
+
+\noindent Примерный календарный график выполнения дипломной работы \\
+(дипломного проекта) \remainingfield{4cm}{Февраль 2025: анализ литературы по космической погоде и спутнико-} \\[0.4cm]
+\fullfield{вым системам;} \\[0.4cm]
+\fullfield{март 2025: сбор и предобработка данных SatNOGS;} \\[0.4cm]
+\fullfield{апрель 2025: разработка модели XGBoost и графа связности;} \\[0.4cm]
+\fullfield{май 2025: тестирование, валидация и оформление результатов работы}
+
+\vspace{1.5cm}
+
+\noindent Дата выдачи задания \remainingfield{12cm}{5 февраля 2025 г.}
+
+\vspace{0.8cm}
+
+\noindent Срок сдачи законченной дипломной работы \\
+(дипломного проекта)
+\hspace*{5cm} \remainingfield{12cm}{} \\
+
+
+\vspace{1.5cm}
+
+\noindent Руководитель дипломной работы \\
+(дипломного проекта) \\[0.6cm]
+\begin{tabular}{@{}l@{\hspace{2cm}}l@{}}
+\ufield{4.5cm}{} & \ufield{6cm}{Баранова В.С.} \\[0.1cm]
+\makebox[4.5cm][c]{\scriptsize (подпись)} & \makebox[6cm][c]{\scriptsize (инициалы, фамилия)}
+\end{tabular}
+
+\vspace{1cm}
+
+\noindent Подпись обучающегося  \remainingfield{12cm}{}
+
+\vspace{0.6cm}
+
+\noindent Дата \ufield{2.5cm}{} 20\ufield{1cm}{} г.
+
+\vspace{1.5cm}
+
+\noindent Проинформирован о недопустимости привлечения третьих лиц к выполнению \\
+дипломной работы (дипломного проекта), плагиата, фальсификации или подлога материалов.
+
+\vspace{1cm}
+
+\begin{tabular}{@{}l@{\hspace{2.5cm}}l@{}}
+\ufield{4.5cm}{} & \ufield{6cm}{Е. М. Глеба} \\[0.1cm]
+\makebox[4.5cm][c]{\scriptsize (подпись)} & \makebox[6cm][c]{\scriptsize (инициалы, фамилия обучающегося)}
+\end{tabular}
+
+\end{document}
