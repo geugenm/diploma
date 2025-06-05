@@ -272,9 +272,8 @@
 % Центрированный заголовок "ОГЛАВЛЕНИЕ"
 \setlength{\cftbeforetoctitleskip}{8pt}
 \setlength{\cftaftertoctitleskip}{10pt}
-\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries\MakeUppercase}
+\renewcommand{\cfttoctitlefont}{\hspace{6cm}\Large\bfseries\MakeUppercase}
 \renewcommand{\cftaftertoctitle}{\hfill}
-\renewcommand{\contentsname}{ОГЛАВЛЕНИЕ}
 
 % ПРАВИЛЬНАЯ настройка отступов - без отступа, ширина 5em
 \cftsetindents{chapter}{0pt}{3.5em}

@@ -22,12 +22,15 @@
 вычисления на \textsc{GPU}, статистический анализ временных рядов,
 автоматизированный сбор телеметрии \textsc{SatNOGS}.
 
-\textbf{Основные результаты}: Создана платформа \textsc{Polaris ML} с
-модифицированным XGBoost, достигающая $F_1\text{-Score} = 0.94$,
-$\text{Precision} = 0.92$, $\text{Recall} = 0.96$ при $25{\times}$ ускорении
-обработки (с $120$ до $4.8$ сек.). Проанализированы $847{\,}326$ телеметрических
-записей $5$ спутников (\textsc{Grifex}, \textsc{Enso}, \textsc{Veronika},
-\textsc{LASARsat}, \textsc{INSPIRESat-1}) за период $2021$--$2025Q2$ гг.
+\textbf{Основные результаты}: Создана платформа \textsc{Polaris ML} с 
+модифицированным алгоритмом XGBoost, демонстрирующая высокие показатели 
+классификации: точность~$=~0.92$, полнота~$=~0.96$. 
+Реализована параллельная обработка с $25{\times}$ ускорением 
+(сокращение времени обработки со $120$ до $4.8$ сек.). Проанализированы 
+$847{\,}326$ телеметрических записей $5$ спутников (\textsc{Grifex}, 
+\textsc{Enso}, \textsc{Veronika}, \textsc{LASARsat}, \textsc{INSPIRESat-1}) 
+за период $2021$--$2025$ гг.
+
 
 \textbf{Научная новизна}: Впервые применен модифицированный \textsc{XGBoost} с
 регуляризацией L1/L2 для прогнозирования отказов спутниковых систем. Предложен
@@ -60,8 +63,8 @@ SATNOGS.
 
 \textbf{Research methods}: Modified \textsc{XGBoost} with hyperparameter optimization, cross-correlation graph analysis, parallel computing on \textsc{GPU}, statistical analysis of time series, automated telemetry collection via \textsc{SatNOGS}.
 
-\textbf{Main results}: Created \textsc{Polaris ML} platform with modified XGBoost, achieving $F_1\text{-Score} = 0.94$,
-$\text{Precision} = 0.92$, $\text{Recall} = 0.96$ with $25{\times}$ processing speedup (from $120$ to $4.8$ seconds). Analyzed $847{\,}326$ telemetry records from $5$ satellites (\textsc{Grifex}, \textsc{Enso}, \textsc{Veronika}, \textsc{LASARsat}, \textsc{INSPIRESat-1}) over the period $2021$--$2025Q2$.
+\textbf{Main results}: Created \textsc{Polaris ML} platform with modified XGBoost, achieving 
+$\text{Precision} = 0.92$, $\text{Recall} = 0.96$ with $25{\times}$ processing speedup (from $120$ to $4.8$ seconds). Analyzed $847{\,}326$ telemetry records from $5$ satellites (\textsc{Grifex}, \textsc{Enso}, \textsc{Veronika}, \textsc{LASARsat}, \textsc{INSPIRESat-1}) over the period $2021$--$2025$.
 
 \textbf{Scientific novelty}: Modified \textsc{XGBoost} with L1/L2 regularization applied for the first time to predict satellite system failures. Proposed mathematical apparatus for constructing space weather connectivity graphs with eigenvector centrality metrics.
 
@@ -88,8 +91,8 @@ $\text{Precision} = 0.92$, $\text{Recall} = 0.96$ with $25{\times}$ processing s
 
 \textbf{Метады даследавання}: мадыфікаваны \textsc{XGBoost} з гіперпараметрычнай аптымізацыяй, аналіз графаў крос-карэляцыі, паралельныя вылічэнні на \textsc{GPU}, статыстычны аналіз часавых шэрагаў, аўтаматызаваны збор тэлеметрыі \textsc{SatNOGS}.
 
-\textbf{Асноўныя вынікі}: Створана платформа \textsc{Polaris ML} з мадыфікаваным XGBoost, якая дасягае $F_1\text{-Score} = 0.94$,
-$\text{Precision} = 0.92$, $\text{Recall} = 0.96$ пры $25{\times}$ паскарэнні апрацоўкі (з $120$ да $4.8$ сек.). Прааналізавана $847{\,}326$ запісаў тэлеметрыі $5$ супутнікаў (\textsc{Grifex}, \textsc{Enso}, \textsc{Veronika}, \textsc{LASARsat}, \textsc{INSPIRESat-1}) за перыяд $2021$--$2025Q2$ гг.
+\textbf{Асноўныя вынікі}: Створана платформа \textsc{Polaris ML} з мадыфікаваным XGBoost, якая дасягае 
+$\text{Precision} = 0.92$, $\text{Recall} = 0.96$ пры $25{\times}$ паскарэнні апрацоўкі (з $120$ да $4.8$ сек.). Прааналізавана $847{\,}326$ запісаў тэлеметрыі $5$ супутнікаў (\textsc{Grifex}, \textsc{Enso}, \textsc{Veronika}, \textsc{LASARsat}, \textsc{INSPIRESat-1}) за перыяд $2021$--$2025$ гг.
 
 \textbf{Навуковая навізна}: Упершыню выкарыстаны мадыфікаваны \textsc{XGBoost} з рэгулярызацыяй L1/L2 для прагназавання адмоваў супутнікавых сістэм. Прапанаваны матэматычны апарат пабудовы графаў сувязі касмічнага наддзення з метрыкай цэнтральнасці па ўласных вектарах.
 

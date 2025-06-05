@@ -70,14 +70,12 @@
 }{
 	Зав. кафедрой физики и аэрокосмических технологий\\
 	доктор физико-математических наук, профессор В. А. Саечников
-}{
-	Минск
-}
+}{Минск}
 
 \input{hyphenation}             % Переносы слов
 \input{task}
 
-\setcounter{page}{2}
+\setcounter{page}{1}
 
 \begin{bsuabstract}
 	\input{abstract}
@@ -86,6 +84,11 @@
 % === ОГЛАВЛЕНИЕ === %
 \tableofcontents
 \clearpage
+
+\setlength{\parskip}{0pt}           % Critical: no extra space between paragraphs
+\setlength{\parindent}{12.5mm}      % Ensure 12.5mm indent
+\clubpenalty=10000                  % Prevent orphans
+\widowpenalty=10000                 % Prevent widows
 
 % === ОСНОВНОЙ КОНТЕНТ === %
 \begin{introduction}
