@@ -93,7 +93,7 @@
 
 % Section format - paragraph indent per GOST
 \titleformat{\section}[hang]
-{\normalfont\large}  % Removed \bfseries per GOST
+{\normalfont\bfseries\large}  % Removed \bfseries per GOST
 {\thesection}
 {1em}
 {}
@@ -101,7 +101,7 @@
 
 % Subsection format - paragraph indent per GOST
 \titleformat{\subsection}[hang]
-{\normalfont\normalsize}  % Removed \bfseries per GOST
+{\normalfont\bfseries\normalsize}  % Removed \bfseries per GOST
 {\thesubsection}
 {1em}
 {}
@@ -302,31 +302,37 @@
   \the\numexpr\getpagerefnumber{conclusion-end}-\getpagerefnumber{intro-start}+1\relax%
 }
 
-
-\RequirePackage{xcolor}
-\RequirePackage{fontawesome5}
-
-\newcommand{\bsutodo}[2][red!85!black]{%
-  \clearpage
-  \thispagestyle{empty}
-  \begin{tikzpicture}[remember picture, overlay]
-    \fill[#1] (current page.south west) rectangle (current page.north east);
-    \node[
-      align=center,
-      text width=0.6\paperwidth,
-      text=white,
-      font=\bfseries\Huge,
-      anchor=center
-    ] at (current page.center) {\faTools\quad #2};
-  \end{tikzpicture}
-  \vspace*{\fill}
-  \clearpage
-}
-
 \RequirePackage[normalem]{ulem}
 
 % Библиография (современный biblatex)
 \RequirePackage[backend=biber, style=numeric, sorting=none, block=none]{biblatex}
+
+% Source mapping for bilingual title support
+% Maps custom 'title_en' field to internal 'usera' for English titles
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=title_en,fieldtarget=usera]
+    }
+  }
+}
+
+\renewbibmacro*{title}{%
+  \ifboolexpr{
+    test {\iffieldundef{title}}
+    and
+    test {\iffieldundef{subtitle}}
+  }
+    {}
+    {\printtext[title]{%
+       \printfield[titlecase]{title}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase]{subtitle}%
+     }}%
+  \iffieldundef{usera}{}{\unspace\space{\printfield{usera}}}%
+  \newunit%
+  \printfield{titleaddon}}
+
 
 \DeclareFieldFormat{labelnumberwidth}{#1.}
 \addbibresource{references.bib}
