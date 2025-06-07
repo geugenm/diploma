@@ -4,16 +4,15 @@ set(PDFLATEX_COMPILER lualatex)
 add_latex_document(
     main.tex
     INPUTS
-    analysis.tex
+    03_analysis.tex
     task.tex
     abstract.tex
-    attachments.tex
     bsu.cls
     ending.tex
     hyphenation.tex
     intro.tex
-    polaris.tex
-    satnogs.tex
+    02_polaris.tex
+    01_satnogs.tex
     BIBFILES
     references.bib
     USE_BIBLATEX

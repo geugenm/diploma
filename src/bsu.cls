@@ -50,7 +50,7 @@
 \geometry{
 	a4paper,
 	left=30mm,
-	right=10mm,
+	right=16mm,
 	top=20mm,
 	bottom=20mm,
 	includefoot
@@ -110,14 +110,15 @@
 %==============================================================================
 % FIGURE AND TABLE CAPTIONS (GOST Compliant)
 %==============================================================================
-% Figure captions: left-aligned, below figure per user feedback
 \captionsetup[figure]{
-	justification=raggedright,    % Left-aligned per advisor feedback
+	justification=justified,      % Justified alignment for professional appearance
 	singlelinecheck=false,        % Disable centering for single lines
 	position=below,
 	skip=6pt,
 	labelsep=endash,
-	font=normalsize
+	font=normalsize,
+        textfont=bf,
+        labelfont=bf 
 }
 
 % Table captions: left-aligned, above table per GOST
@@ -305,36 +306,53 @@
 \RequirePackage[normalem]{ulem}
 
 % Библиография (современный biblatex)
-\RequirePackage[backend=biber, style=numeric, sorting=none, block=none]{biblatex}
-
-% Source mapping for bilingual title support
-% Maps custom 'title_en' field to internal 'usera' for English titles
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map{
-      \step[fieldsource=title_en,fieldtarget=usera]
-    }
-  }
-}
-
-\renewbibmacro*{title}{%
-  \ifboolexpr{
-    test {\iffieldundef{title}}
-    and
-    test {\iffieldundef{subtitle}}
-  }
-    {}
-    {\printtext[title]{%
-       \printfield[titlecase]{title}%
-       \setunit{\subtitlepunct}%
-       \printfield[titlecase]{subtitle}%
-     }}%
-  \iffieldundef{usera}{}{\unspace\space{\printfield{usera}}}%
-  \newunit%
-  \printfield{titleaddon}}
+\RequirePackage[backend=biber, 
+  style=gost-numeric,
+  sorting=none,
+  language=auto,
+  autolang=other,
+  defernumbers=true,
+  maxcitenames=3,
+  mincitenames=1,
+  mcite=subentry,
+  citetracker=true,
+  doi=false,
+  isbn=false,
+  url=true,
+  urldate=long,
+  hyperref=auto]{biblatex}
 
 
-\DeclareFieldFormat{labelnumberwidth}{#1.}
+\DeclareFieldFormat{url}{Режим доступа: \url{#1}}
+\DeclareFieldFormat{urldate}{Дата обращения: #1}
+\DeclareFieldFormat{note}{\mkbibemph{#1}}
+\DeclareFieldFormat[online]{title}{#1\addspace[Электронный ресурс]}
+
+
+
+
+\setlength{\bibitemsep}{0pt}
+\setlength{\bibparsep}{0pt}
+\setlength{\biblabelsep}{1em}
+\setlength{\labelnumberwidth}{0em}
+
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelnumberwidth]{%
+        \printfield{labelprefix}%      % Prefix before citation number
+        \printfield{labelnumber}}}     % The actual citation number
+     {\setlength{\labelwidth}{-\labelnumberwidth}%        % Width reserved for citation labels
+      \setlength{\leftmargin}{\labelwidth}%              % Left margin = label width
+      \setlength{\labelsep}{0.4em}%               % Space between label and text
+      \addtolength{\leftmargin}{\labelsep}%              % Total left margin adjustment
+      \setlength{\itemsep}{\bibitemsep}%                 % Vertical space between entries
+      \setlength{\parsep}{\bibparsep}%                   % Vertical space between paragraphs
+      \setlength{\itemindent}{35pt}%             % Hanging indent (negative)
+      \renewcommand*{\makelabel}[1]{\hss##1}}}           % Right-align labels with \hss
+  {\endlist}
+  {\item}
+
+
 \addbibresource{references.bib}
 
 

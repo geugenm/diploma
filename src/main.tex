@@ -75,6 +75,8 @@
 \input{hyphenation}             % Переносы слов
 \input{task}
 
+\thispagestyle{empty}
+\pagestyle{plain}
 \setcounter{page}{1}
 
 \begin{bsuabstract}
@@ -83,7 +85,6 @@
 
 % === ОГЛАВЛЕНИЕ === %
 \tableofcontents
-\clearpage
 
 \setlength{\parskip}{0pt}           % Critical: no extra space between paragraphs
 \setlength{\parindent}{12.5mm}      % Ensure 12.5mm indent
@@ -96,12 +97,12 @@
 \end{introduction}
 
 \newpage
-\input{satnogs}
+\input{01_satnogs}
 
 \newpage
-\input{polaris}
+\input{02_polaris}
 
-\input{analysis}
+\input{03_analysis}
 
 \begin{conclusion}
 	\input{ending}
@@ -110,6 +111,6 @@
 % === БИБЛИОГРАФИЯ === %
 \newpage
 
-\printbibliography[heading=bibintoc,title={Список использованной литературы}]
+\printbibliography[heading=bibintoc,title={Список использованных источников}]
 
 \end{document}
