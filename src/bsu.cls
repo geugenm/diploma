@@ -312,15 +312,13 @@
   language=auto,
   autolang=other,
   defernumbers=true,
-  maxcitenames=3,
-  mincitenames=1,
-  mcite=subentry,
   citetracker=true,
   doi=false,
   isbn=false,
   url=true,
   urldate=long,
   hyperref=auto]{biblatex}
+
 
 
 \DeclareFieldFormat{url}{Режим доступа: \url{#1}}
