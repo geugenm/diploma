@@ -117,8 +117,8 @@
 	skip=6pt,
 	labelsep=endash,
 	font=normalsize,
-        textfont=bf,
-        labelfont=bf 
+	textfont=bf,
+	labelfont=bf
 }
 
 % Table captions: left-aligned, above table per GOST
@@ -300,64 +300,13 @@
 \RequirePackage{refcount}
 
 \newcommand{\maincontentpages}{%
-  \the\numexpr\getpagerefnumber{conclusion-end}-\getpagerefnumber{intro-start}+1\relax%
+	\the\numexpr\getpagerefnumber{conclusion-end}-\getpagerefnumber{intro-start}+1\relax%
 }
 
 \RequirePackage[normalem]{ulem}
 
-% Библиография (современный biblatex)
-\RequirePackage[backend=biber, 
-  style=gost-numeric,
-  sorting=none,
-  language=auto,
-  autolang=other,
-  defernumbers=true,
-  citetracker=true,
-  doi=false,
-  isbn=false,
-  url=true,
-  urldate=long,
-  hyperref=auto]{biblatex}
-
-
-
-\DeclareFieldFormat{url}{Режим доступа: \url{#1}}
-\DeclareFieldFormat{urldate}{Дата обращения: #1}
-\DeclareFieldFormat{note}{\mkbibemph{#1}}
-\DeclareFieldFormat[online]{title}{#1\addspace[Электронный ресурс]}
-
-
-
-
-\setlength{\bibitemsep}{0pt}
-\setlength{\bibparsep}{0pt}
-\setlength{\biblabelsep}{1em}
-\setlength{\labelnumberwidth}{0em}
-
-\defbibenvironment{bibliography}
-  {\list
-     {\printtext[labelnumberwidth]{%
-        \printfield{labelprefix}%      % Prefix before citation number
-        \printfield{labelnumber}}}     % The actual citation number
-     {\setlength{\labelwidth}{-\labelnumberwidth}%        % Width reserved for citation labels
-      \setlength{\leftmargin}{\labelwidth}%              % Left margin = label width
-      \setlength{\labelsep}{0.4em}%               % Space between label and text
-      \addtolength{\leftmargin}{\labelsep}%              % Total left margin adjustment
-      \setlength{\itemsep}{\bibitemsep}%                 % Vertical space between entries
-      \setlength{\parsep}{\bibparsep}%                   % Vertical space between paragraphs
-      \setlength{\itemindent}{35pt}%             % Hanging indent (negative)
-      \renewcommand*{\makelabel}[1]{\hss##1}}}           % Right-align labels with \hss
-  {\endlist}
-  {\item}
-
+\RequirePackage{bsu_bib}
 
 \addbibresource{references.bib}
 
-
-\newcounter{totalsources}
-\AtDataInput{\stepcounter{totalsources}}
-
 \endinput
-%==============================================================================
-% END OF CLASS
-%==============================================================================

@@ -1,0 +1,43 @@
+\ProvidesPackage{bsu-bib}[2025/06/08 BSU Bibliography Style]
+
+\RequirePackage[backend=biber,
+	style=gost-numeric,
+	sorting=none,
+	language=auto,
+	autolang=other,
+	defernumbers=true,
+	citetracker=true,
+	doi=false,
+	isbn=false,
+	url=true,
+	urldate=long,
+	hyperref=auto]{biblatex}
+
+\DeclareFieldFormat{url}{Режим доступа: \url{#1}}
+\DeclareFieldFormat{urldate}{Дата обращения: #1}
+\DeclareFieldFormat{note}{\mkbibemph{#1}}
+\DeclareFieldFormat[online]{title}{#1\addspace[Электронный ресурс]}
+
+\setlength{\bibitemsep}{0pt}
+\setlength{\bibparsep}{0pt}
+\setlength{\biblabelsep}{1em}
+\setlength{\labelnumberwidth}{0em}
+
+\defbibenvironment{bibliography}
+{\list
+	{\printtext[labelnumberwidth]{%
+			\printfield{labelprefix}%
+			\printfield{labelnumber}}}
+	{\setlength{\labelwidth}{-\labelnumberwidth}%
+		\setlength{\leftmargin}{\labelwidth}%
+		\setlength{\labelsep}{0.4em}%
+		\addtolength{\leftmargin}{\labelsep}%
+		\setlength{\itemsep}{\bibitemsep}%
+		\setlength{\parsep}{\bibparsep}%
+		\setlength{\itemindent}{35pt}%
+		\renewcommand*{\makelabel}[1]{\hss##1}}}
+{\endlist}
+{\item}
+
+\newcounter{totalsources}
+\AtDataInput{\stepcounter{totalsources}}

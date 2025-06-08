@@ -5,6 +5,7 @@ add_latex_document(
     main.tex
     INPUTS
     bsu.cls
+    bsu_bib.sty
     task.tex
     hyphenation.tex
     00_abstract.tex
