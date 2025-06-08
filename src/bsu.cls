@@ -41,7 +41,6 @@
 % FONTS (LuaTeX Optimized)
 %==============================================================================
 \RequirePackage{fontspec}
-% TODO: Replace with desired font family if needed
 \setmainfont{Times New Roman}
 
 %==============================================================================
@@ -155,8 +154,11 @@
 %==============================================================================
 % BIBLIOGRAPHY FORMATTING (GOST Compliant)
 %==============================================================================
-% TODO: Add bibliography formatting improvements for GOST compliance
-% This should be configured with biblatex for proper GOST formatting
+\RequirePackage[normalem]{ulem}
+
+\RequirePackage{bsu_bib}
+
+\addbibresource{references.bib}
 
 %==============================================================================
 % HYPERREF CONFIGURATION
@@ -297,16 +299,8 @@
 	\setlength{\headheight}{14.0pt}
 }
 
-\RequirePackage{refcount}
-
 \newcommand{\maincontentpages}{%
 	\the\numexpr\getpagerefnumber{conclusion-end}-\getpagerefnumber{intro-start}+1\relax%
 }
-
-\RequirePackage[normalem]{ulem}
-
-\RequirePackage{bsu_bib}
-
-\addbibresource{references.bib}
 
 \endinput
