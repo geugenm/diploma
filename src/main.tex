@@ -73,11 +73,18 @@
 }{Минск}
 
 \input{hyphenation}             % Переносы слов
-\input{task}
 
-\thispagestyle{empty}
+\setstretch{1.15}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\newcommand{\ufield}[2]{\uline{\makebox[#1][l]{\hspace{0.15cm}#2\hspace{0.15cm}}}}
+\newcommand{\fullfield}[1]{\uline{\makebox[\textwidth][l]{\hspace{0.15cm}#1\hspace{0.15cm}}}}
+\newcommand{\remainingfield}[2]{\uline{\makebox[\textwidth-#1][l]{\hspace{0.15cm}#2\hspace{0.15cm}}}}
+
 \pagestyle{plain}
-\setcounter{page}{1}
+\setcounter{page}{2}
 
 \begin{bsuabstract}
 	\input{00_abstract}
@@ -112,5 +119,9 @@
 \newpage
 
 \printbibliography[heading=bibintoc,title={Список использованных источников}]
+
+\clearpage
+\pagestyle{empty}
+\input{task}
 
 \end{document}
