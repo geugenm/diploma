@@ -45,14 +45,14 @@ if(ZATHURA)
     )
 endif()
 
-# todo: make it automated (like autoformat, not dry run)
-#file(GLOB_RECURSE tex_files_to_format CONFIGURE_DEPENDS *.tex)
-#foreach(tex_file ${tex_files_to_format})
-#    add_test(
-#        NAME "latexindent -k '${tex_file}'"
-#        COMMAND ${CMAKE_COMMAND} -E env ${LATEXINDENT} -k ${tex_file}
-#        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-#    )
+
+file(GLOB_RECURSE tex_files_to_format CONFIGURE_DEPENDS *.tex)
+foreach(tex_file ${tex_files_to_format})
+    add_test(
+        NAME "latexindent -k '${tex_file}'"
+        COMMAND ${CMAKE_COMMAND} -E env ${LATEXINDENT} -k ${tex_file}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    )
 #endforeach()
 
 set(extensions pdf log)
