@@ -24,6 +24,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Run tests
+        run: cmake --workflow --preset test
+
       - name: Deploy
         run: cmake --workflow --preset deploy
 
